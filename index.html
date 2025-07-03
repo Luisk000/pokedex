@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- normalize CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Font Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- <link rel="stylesheet" href="assets/css/global.css"> -->
+    <link rel="stylesheet" href="assets/css/global.css"></link>
+    <link rel="stylesheet" href="assets/css/pokedex.css"></link>
+    <link rel="stylesheet" href="assets/css/types.css"></link>
+    <link rel="stylesheet" href="assets/css/detail.css"></link>
+  </head>
+  <body id="body" style="display: flex; flex-direction: column; justify-content: center;">
+    <div style="display: flex; flex-direction: row;" id="main">
+      <section class="content" id="main-content">
+        <h1>Pokedex</h1>
+        <ol class="pokemons" id="pokemonList"></ol>     
+      </section>
+    </div>
+    <div class="pagination">
+          <div>
+            <button
+              id="firstPageButton"
+              type="button"
+              class="btn-pagination btn-pagination-small"
+            >
+              <<
+            </button>
+            <button
+              id="previousPageButton"
+              type="button"
+              class="btn-pagination"
+            >
+              < Anterior
+            </button>
+          </div>
+          <div>
+            <button id="nextPageButton" type="button" class="btn-pagination">
+              Próximo >
+            </button>
+            <button
+              id="lastPageButton"
+              type="button"
+              class="btn-pagination btn-pagination-small"
+            >
+              >>
+            </button>
+          </div>
+    </div>
+
+    <script src="assets/js/pokemon-model.js"></script>
+    <script src="assets/js/poke-api.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/pokemon-detail.js"></script>
+  </body>
+</html>
+
+<!-- http-server ./ inicia um servidor http -->
