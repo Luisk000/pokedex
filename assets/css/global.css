@@ -8,6 +8,17 @@ body {
     background-color: #e4e4e4;;
 }
 
+.body{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.main{
+    display: flex; 
+    flex-direction: row;
+}
+
 .content{
     padding: 1rem;
     background-color: #fff;

@@ -6,7 +6,6 @@ const pokeballBackground = document.createElement('img');
 const mainContent = document.getElementById('main-content')
 const section = document.createElement('section');
 
-pokeballBackground.className = "pokeball-img"
 pokeballBackground.src = "images/pokeball.png"
 
 section.className = 'content details-content';
@@ -80,13 +79,26 @@ function openDetailHtml(pokemon){
 
             detailScreen.innerHTML = html;
             detailScreen.className = `content details-content ${pokemon.type}-background`;
-            detailScreen.appendChild(pokeballBackground);
+
+            const pokeballCard = document.getElementById('pokeball-card');
+            pokeballCard.appendChild(pokeballBackground);
             
             mainContent.className = "content details-open-main";
             
             const pokemonImage = document.createElement('img')
             pokemonImage.src = pokemon.photo;
-            pokemonImage.className = "pokemon-image";
-            detailScreen.appendChild(pokemonImage)
+            pokemonImage.className = 'pokemon-image';
+
+            const imageCard = document.getElementById('image-card');
+            imageCard.appendChild(pokemonImage)
+
+            const pokemonTitle = document.getElementById('pokemon-title');
+            pokemonTitle.innerHTML = pokemon.name;
         })
+}
+
+function converterPokemonStatsHtml(pokemonStats) {
+    return pokemonStats.map((stat) => {
+        return `<li class="stat"></li>`
+    })
 }
