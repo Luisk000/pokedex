@@ -69,49 +69,6 @@
     text-transform: capitalize;
 }
 
-@media screen and (min-width: 380px){
-    .pokemons {
-        grid-template-columns: 1fr 1fr;
-    }
 
-    .details-open-pokemon{
-        grid-template-columns: 1fr;
-    }
-}
 
-@media screen and (min-width: 500px) {
-    .pokemon{
-        min-width: 170px;
-    }
-}
-
-@media screen and (min-width: 576px){
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .details-open-pokemon{
-        grid-template-columns: 1fr;
-    }
-}
-
-@media screen and (min-width: 750px){
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .details-open-pokemon{
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (min-width: 1050px){
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
-    .details-open-pokemon{
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
 

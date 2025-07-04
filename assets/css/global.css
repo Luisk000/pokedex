@@ -48,15 +48,16 @@ body {
 .btn-pagination{
     background-color: red;
     border: 1px solid red;
-    padding: 10px 30px 10px 30px;
     color: white;
-    border-radius: 10px;
     cursor: pointer;
+    font-size: 9px;
+    padding: 4px 7px 4px 7px;
+    border-radius: 5px;
 }
 
 .btn-pagination-small{
-    padding: 10px;
-    margin: 3px;
+    font-size: 9px;
+    padding: 4px;
 }
 
 .btn-pagination:hover{
@@ -65,36 +66,4 @@ body {
 
 .btn-pagination:active {
     transform:scale(1.05);
-}
-
-@media screen and (min-width: 1050px){
-    .content{
-        max-width: 1050px;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (max-width: 450px){
-    .btn-pagination{
-        font-size: 12px;
-        padding: 8px 12px 8px 12px;
-    }
-
-    .btn-pagination-small{
-        padding: 8px;
-        margin: 0px;
-    }
-}
-
-@media screen and (max-width: 310px){
-    .btn-pagination{
-        font-size: 9px;
-        padding: 4px 7px 4px 7px;
-        border-radius: 8px;
-    }
-
-    .btn-pagination-small{
-        padding: 4px;
-        margin: -2px;
-    }
 }

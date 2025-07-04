@@ -1,102 +1,70 @@
-.details-content{
-    position: relative;
-}
-
-.pokeball-card{
-    position: absolute;
-    filter: invert(1) opacity(0.2);
-    width: 350px;
-    right: 2%;
-    z-index: 1;
-}
-
-.image-card{
-    position: relative;
-    justify-self: center;
-    width: 350px;
-    border: 1px solid red;
-    z-index: 2;
-}
-
-.stat-card{
-    background-color: rgb(236, 236, 236);
-    width: 94%;
-    height: 200px;
-    border-radius: 8px;
-    z-index: 3;
-}
-
-.pokemon-title{
-    text-align: center;
-}
-
-@media screen and (max-width: 900px){
-    .pokeball-card{
-        width: 300px;
-    }
-}
-
-@media screen and (max-width: 790px){
-    
-.image-card{
-    width: auto;
-}
-
-}
-
-@media screen and (max-width: 710px){
-    .pokeball-card{
-        width: 250px;
-    }
-
-    .image-card{
-        margin-top: -10px;
-    }
-}
-
-@media screen and (max-width: 600px){
-    .pokeball-card{
-        width: 220px;
-    }
-
-    .details-open-main{
+.details-open-main{
         width: 160px;
     }
 
-    .details-open-pokemon{
-        .pokemon{
-            min-width: none !important;
-            width: 120px;
-        }
-
-        .name{
-            align-self: center;
-        }
-
-        .detail{
-            display: flex;
-            flex-direction: column !important;
-        }
-
-        .types{
-            display: flex;;
-            flex-direction: row;
-            align-self: center;
-            order: 2;
-        }  
-        
-        .pokemon .detail img{
-            max-width: 100%;
-            height: 60px;
-            align-self: center;
-            order: 1;
-        }
+.details-open-pokemon{
+    .pokemon{
+        min-width: none !important;
+        width: 120px;
     }
 
-}
+    .name{
+        align-self: center;
+    }
 
-@media screen and (max-width: 420px){
-    .pokeball-card{
-        width: 180px;
+    .detail{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .types{
+        display: flex;;
+        flex-direction: row;
+        align-self: center;
+        order: 2;
+    }  
+    
+    .pokemon .detail img{
+        max-width: 100%;
+        height: 60px;
+        align-self: center;
+        order: 1;
     }
 }
+
+.details-content{
+	position: relative;
+}
+
+.pokemon-title{
+	text-align: center;
+}
+
+.image-card{
+	width: auto;
+	margin-top: -10px;
+}
+
+.stat-card{
+	background-color: rgb(236, 236, 236);
+	width: 94%;
+	height: 200px;
+	border-radius: 8px;
+	z-index: 3;
+}
+
+.pokeball-card{
+	width: 180px;
+	position: absolute;
+	filter: invert(1) opacity(0.2);
+	right: 2%;
+	z-index: 1;
+}
+
+.image-card{
+	position: relative;
+	justify-self: center;
+	border: 1px solid red;
+	z-index: 2;
+}
+
