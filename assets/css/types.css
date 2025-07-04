@@ -89,75 +89,297 @@
 }
 
 .fighting-background{
-    background: linear-gradient(to bottom, #D0406A 170px, white 170px);
+    background: linear-gradient(to bottom, #D0406A 160px, white 160px);
 }
 
 .psychic-background{
-    background: linear-gradient(to bottom, #FA7378 170px, white 170px);
+    background: linear-gradient(to bottom, #FA7378 160px, white 160px);
 }
 
 .poison-background{
-    background: linear-gradient(to bottom, #AB6AC9 170px, white 170px);
+    background: linear-gradient(to bottom, #AB6AC9 160px, white 160px);
 }
 
 .dragon-background{
-    background: linear-gradient(to bottom, #0D6DC8 170px, white 170px);
+    background: linear-gradient(to bottom, #0D6DC8 160px, white 160px);
 }
 
 .ghost-background{
-    background: linear-gradient(to bottom, #526BAE 170px, white 170px);
+    background: linear-gradient(to bottom, #526BAE 160px, white 160px);
 }
 
 .dark-background{
-    background: linear-gradient(to bottom, #5C5467 170px, white 170px);
+    background: linear-gradient(to bottom, #5C5467 160px, white 160px);
 }
 
 .ground-background{
-    background: linear-gradient(to bottom, #DB7946 170px, white 170px);
+    background: linear-gradient(to bottom, #DB7946 160px, white 160px);
 }
 
 .fire-background{
-    background: linear-gradient(to bottom, #FF9C55 170px, white 170px);
+    background: linear-gradient(to bottom, #FF9C55 160px, white 160px);
 }
 
 .fairy-background{
-    background: linear-gradient(to bottom, #EB8FE5 170px, white 170px);
+    background: linear-gradient(to bottom, #EB8FE5 160px, white 160px);
 }
 
 .water-background{
-    background: linear-gradient(to bottom, #4D90D4 170px, white 170px);
+    background: linear-gradient(to bottom, #4D90D4 160px, white 160px);
 }
 
 .flying-background{
-    background: linear-gradient(to bottom, #90A9DE 170px, white 170px);
+    background: linear-gradient(to bottom, #90A9DE 160px, white 160px);
 }
 
 .normal-background{
-    background: linear-gradient(to bottom, #8F99A1 170px, white 170px);
+    background: linear-gradient(to bottom, #8F99A1 160px, white 160px);
 }
 
 .rock-background{
-    background: linear-gradient(to bottom, #C5B88A 170px, white 170px);
+    background: linear-gradient(to bottom, #C5B88A 160px, white 160px);
 }
 
 .electric-background{
-    background: linear-gradient(to bottom, #F3D23B 170px, white 170px);
+    background: linear-gradient(to bottom, #F3D23B 160px, white 160px);
 }
 
 .bug-background{
-    background: linear-gradient(to bottom, #90C22D 170px, white 170px);
+    background: linear-gradient(to bottom, #90C22D 160px, white 160px);
 }
 
 .grass-background{
-    background: linear-gradient(to bottom, #63BC5C 170px, white 170px);
+    background: linear-gradient(to bottom, #63BC5C 160px, white 160px);
 }
 
 .ice-background{
-    background: linear-gradient(to bottom, #76CEC0 170px, white 170px);
+    background: linear-gradient(to bottom, #76CEC0 160px, white 160px);
 }
 
 .steel-background{
-    background: linear-gradient(to bottom, #5B90A3 170px, white 170px);
+    background: linear-gradient(to bottom, #5B90A3 160px, white 160px);
+}
+
+@media screen and (min-width: 390px){
+     .fighting-background{
+        background: linear-gradient(to bottom, #D0406A 185px, white 185px);
+    }
+
+    .psychic-background{
+        background: linear-gradient(to bottom, #FA7378 185px, white 185px);
+    }
+
+    .poison-background{
+        background: linear-gradient(to bottom, #AB6AC9 185px, white 185px);
+    }
+
+    .dragon-background{
+        background: linear-gradient(to bottom, #0D6DC8 185px, white 185px);
+    }
+
+    .ghost-background{
+        background: linear-gradient(to bottom, #526BAE 185px, white 185px);
+    }
+
+    .dark-background{
+        background: linear-gradient(to bottom, #5C5467 185px, white 185px);
+    }
+
+    .ground-background{
+        background: linear-gradient(to bottom, #DB7946 185px, white 185px);
+    }
+
+    .fire-background{
+        background: linear-gradient(to bottom, #FF9C55 185px, white 185px);
+    }
+
+    .fairy-background{
+        background: linear-gradient(to bottom, #EB8FE5 185px, white 185px);
+    }
+
+    .water-background{
+        background: linear-gradient(to bottom, #4D90D4 185px, white 185px);
+    }
+
+    .flying-background{
+        background: linear-gradient(to bottom, #90A9DE 185px, white 185px);
+    }
+
+    .normal-background{
+        background: linear-gradient(to bottom, #8F99A1 185px, white 185px);
+    }
+
+    .rock-background{
+        background: linear-gradient(to bottom, #C5B88A 185px, white 185px);
+    }
+
+    .electric-background{
+        background: linear-gradient(to bottom, #F3D23B 185px, white 185px);
+    }
+
+    .bug-background{
+        background: linear-gradient(to bottom, #90C22D 185px, white 185px);
+    }
+
+    .grass-background{
+        background: linear-gradient(to bottom, #63BC5C 185px, white 185px);
+    }
+
+    .ice-background{
+        background: linear-gradient(to bottom, #76CEC0 185px, white 185px);
+    }
+
+    .steel-background{
+        background: linear-gradient(to bottom, #5B90A3 185px, white 185px);
+    }
+}
+
+@media screen and (min-width: 600px){
+    .fighting-background{
+        background: linear-gradient(to bottom, #D0406A 245px, white 245px);
+    }
+
+    .psychic-background{
+        background: linear-gradient(to bottom, #FA7378 245px, white 245px);
+    }
+
+    .poison-background{
+        background: linear-gradient(to bottom, #AB6AC9 245px, white 245px);
+    }
+
+    .dragon-background{
+        background: linear-gradient(to bottom, #0D6DC8 245px, white 245px);
+    }
+
+    .ghost-background{
+        background: linear-gradient(to bottom, #526BAE 245px, white 245px);
+    }
+
+    .dark-background{
+        background: linear-gradient(to bottom, #5C5467 245px, white 245px);
+    }
+
+    .ground-background{
+        background: linear-gradient(to bottom, #DB7946 245px, white 245px);
+    }
+
+    .fire-background{
+        background: linear-gradient(to bottom, #FF9C55 245px, white 245px);
+    }
+
+    .fairy-background{
+        background: linear-gradient(to bottom, #EB8FE5 245px, white 245px);
+    }
+
+    .water-background{
+        background: linear-gradient(to bottom, #4D90D4 245px, white 245px);
+    }
+
+    .flying-background{
+        background: linear-gradient(to bottom, #90A9DE 245px, white 245px);
+    }
+
+    .normal-background{
+        background: linear-gradient(to bottom, #8F99A1 245px, white 245px);
+    }
+
+    .rock-background{
+        background: linear-gradient(to bottom, #C5B88A 245px, white 245px);
+    }
+
+    .electric-background{
+        background: linear-gradient(to bottom, #F3D23B 245px, white 245px);
+    }
+
+    .bug-background{
+        background: linear-gradient(to bottom, #90C22D 245px, white 245px);
+    }
+
+    .grass-background{
+        background: linear-gradient(to bottom, #63BC5C 245px, white 245px);
+    }
+
+    .ice-background{
+        background: linear-gradient(to bottom, #76CEC0 245px, white 245px);
+    }
+
+    .steel-background{
+        background: linear-gradient(to bottom, #5B90A3 245px, white 245px);
+    }
+}
+
+@media screen and (min-width: 760px){
+.fighting-background{
+        background: linear-gradient(to bottom, #D0406A 300px, white 300px);
+    }
+
+    .psychic-background{
+        background: linear-gradient(to bottom, #FA7378 300px, white 300px);
+    }
+
+    .poison-background{
+        background: linear-gradient(to bottom, #AB6AC9 300px, white 300px);
+    }
+
+    .dragon-background{
+        background: linear-gradient(to bottom, #0D6DC8 300px, white 300px);
+    }
+
+    .ghost-background{
+        background: linear-gradient(to bottom, #526BAE 300px, white 300px);
+    }
+
+    .dark-background{
+        background: linear-gradient(to bottom, #5C5467 300px, white 300px);
+    }
+
+    .ground-background{
+        background: linear-gradient(to bottom, #DB7946 300px, white 300px);
+    }
+
+    .fire-background{
+        background: linear-gradient(to bottom, #FF9C55 300px, white 300px);
+    }
+
+    .fairy-background{
+        background: linear-gradient(to bottom, #EB8FE5 300px, white 300px);
+    }
+
+    .water-background{
+        background: linear-gradient(to bottom, #4D90D4 300px, white 300px);
+    }
+
+    .flying-background{
+        background: linear-gradient(to bottom, #90A9DE 300px, white 300px);
+    }
+
+    .normal-background{
+        background: linear-gradient(to bottom, #8F99A1 300px, white 300px);
+    }
+
+    .rock-background{
+        background: linear-gradient(to bottom, #C5B88A 300px, white 300px);
+    }
+
+    .electric-background{
+        background: linear-gradient(to bottom, #F3D23B 300px, white 300px);
+    }
+
+    .bug-background{
+        background: linear-gradient(to bottom, #90C22D 300px, white 300px);
+    }
+
+    .grass-background{
+        background: linear-gradient(to bottom, #63BC5C 300px, white 300px);
+    }
+
+    .ice-background{
+        background: linear-gradient(to bottom, #76CEC0 300px, white 300px);
+    }
+
+    .steel-background{
+        background: linear-gradient(to bottom, #5B90A3 300px, white 300px);
+    }
 }
 
 /* Se tenho um linear gradient 30% e 70%, então a cor terminará 3m 30%, e se
