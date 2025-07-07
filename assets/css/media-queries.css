@@ -1,3 +1,14 @@
+@media screen and (min-width: 380px){
+    .stat-name{
+        width: 110px;
+    }
+
+    .stat-name, .stat-value{
+        font-size: 16px;
+    }
+
+}
+
 @media screen and (min-width: 420px){
 	.pokemons {
         grid-template-columns: 1fr 1fr;
@@ -51,11 +62,42 @@
     }
 }
 
+@media screen and (min-width: 500px){
+    .abilities-list{
+        margin-right: 15px;
+    }
+
+    .ability{
+        font-size: 16px;
+    }
+
+    .ability-name{
+        padding: 4px 15px 4px 15px;
+    }
+
+    .hidden{
+        font-size: 12px;
+        border-radius: 15px;
+        margin-left: 10px;
+        padding: 2px 8px 2px 8px;
+        margin-right: 4px;
+    }
+
+
+}
+
 @media screen and (min-width: 600px){
     .pokeball-card{
         width: 250px;
     }
 
+    .abilities-list{
+        margin-left: 40px;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (min-width: 650px){
     .stat-bar-background{
         display: flex;
         width: 30%;

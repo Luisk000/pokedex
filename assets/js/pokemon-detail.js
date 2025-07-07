@@ -127,7 +127,7 @@ function buildStatsHtml(pokemon){
                 <div class='stat-bar-background'>
                         <div class='stat-bar' style='width: ${width}%;'></div>
                     </div>
-                ${stat.value}        
+                <div class='stat-value'>${stat.value}</div>     
             </li>
             `
     })
@@ -140,7 +140,9 @@ function buildAbilitiesHtml(pokemon) {
         if (ability.isHidden)
             hidden = `<div class='hidden'>hidden</div>`
         abilitiesCard.innerHTML += `
-            <li class='ability'>${ability.name}${hidden}</li>
+            <li class='ability'>
+                <div class='ability-name'>${ability.name}</div>${hidden}
+            </li>
         `
     })
 }
