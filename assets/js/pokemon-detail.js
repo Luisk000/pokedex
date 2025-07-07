@@ -89,7 +89,6 @@ async function getDetailHtml(id){
 }
 
 function buildDetailHtml(pokemon, html) {
-    console.log(pokemon)
     // Card
     const detailScreen = document.getElementById('detailScreen');
     detailScreen.innerHTML = html;
@@ -143,6 +142,17 @@ function buildAbilitiesHtml(pokemon) {
             <li class='ability'>
                 <div class='ability-name'>${ability.name}</div>${hidden}
             </li>
+        `
+    })
+}
+
+function buildVariationsHtml(pokemon){
+    const variationsList = document.getElementById('variations-list');
+    pokemon.variationsList.map((variation) => {
+        variationsList.innerHTML += `
+            <div>
+                
+            </div>
         `
     })
 }

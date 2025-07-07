@@ -1,0 +1,118 @@
+.details-content{
+	position: relative;
+}
+
+.bottom{
+    margin-top: 30px;
+}
+
+.pokeball-card{
+	width: 170px;
+	position: absolute;
+	filter: invert(1) opacity(0.2);
+	right: 2%;
+	z-index: 1;
+    margin-right: -60px;
+}
+
+.image-card{
+	position: relative;
+	justify-self: center;
+    width: 100%;
+    transform: scale(1.15);
+	z-index: 2;
+}
+
+.pokemon-title{
+	text-align: center;
+}
+
+.card{
+	background-color: rgb(236, 236, 236);
+	width: 100%;
+    margin-top: 30px;
+	border-radius: 8px;
+	z-index: 3;
+    height: fit-content;
+    padding-bottom: 10px;
+}
+
+.card-title{
+    color: black;
+    filter: opacity(0.6);
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.stat{
+    list-style-type: none;
+    padding-left: 25px;   
+    margin-bottom: 8px;  
+    display: flex;
+    flex-direction: row;
+}
+
+.stat-name{
+    list-style-type: none;
+    text-transform: capitalize;
+    width: 80px;
+}
+
+.stat-name, .stat-value{
+    font-size: 12px;
+}
+
+.stat-bar-background{
+    display: none;
+    background-color: black;
+    filter: opacity(0.4);
+    height: 15px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.stat-bar{
+    border-radius: 30px;
+    background-color: green;
+    height: 15px;
+    width: 100%;
+    min-width: 15px;
+}
+
+.abilities-list{
+    display: flex;
+    gap: 8px 5%;
+    flex-wrap: wrap;
+    margin-left: 15px;
+    margin-right: 12px;
+}
+
+.ability{
+    list-style-type: none;
+    background-color: black;
+    filter: opacity(0.6);
+    color: white;
+    width: fit-content;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-wrap: nowrap;
+    font-size: 12px;
+}
+
+.ability-name{
+    text-transform: capitalize;
+    padding: 4px 10px 4px 10px;
+}
+
+.hidden{
+    background-color: red;
+    font-size: 10px;
+    color: white;
+    border-radius: 15px;
+    margin-left: 10px;
+    padding: 2px 6px 2px 6px;
+    margin-right: 2px;
+    margin-left: -5px;
+}

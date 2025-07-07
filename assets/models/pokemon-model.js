@@ -7,4 +7,5 @@ class Pokemon {
     stats = new Array(6);
     abilities = new Array();
     moves = new Array();
+    variations = new Array();
 }
