@@ -119,8 +119,16 @@ function buildDetailHtml(pokemon, html) {
 function buildStatsHtml(pokemon){
     const statCard = document.getElementById('stat-card');
     pokemon.stats.map((stat) => {
+        let width = stat.value * 100 / 255; 
+
         statCard.innerHTML += `
-            <li>${stat.name} ${stat.value}</li>
+            <li class='stat'>
+                <div class='stat-name'>${stat.name}</div>
+                <div class='stat-bar-background'>
+                        <div class='stat-bar' style='width: ${width}%;'></div>
+                    </div>
+                ${stat.value}        
+            </li>
             `
     })
 }

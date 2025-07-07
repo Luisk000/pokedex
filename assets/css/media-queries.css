@@ -55,6 +55,11 @@
     .pokeball-card{
         width: 250px;
     }
+
+    .stat-bar-background{
+        display: flex;
+        width: 30%;
+    }
 }
 
 @media screen and (min-width: 700px){
@@ -85,6 +90,10 @@
     .pokeball-card{
         width: 300px;
     }
+
+    .stat-bar-background{
+        width: 42%;
+    }
 }
 
 @media screen and (min-width: 790px){
@@ -97,6 +106,10 @@
 @media screen and (min-width: 900px){
     .pokeball-card{
         width: 350px;
+    }
+
+    .stat-bar-background{
+        width: 56%;
     }
 }
 
@@ -117,5 +130,11 @@
 
     .details-open-pokemon{
         grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .stat-bar-background{
+        width: 68%;
     }
 }

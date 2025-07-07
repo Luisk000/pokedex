@@ -176,6 +176,8 @@ body {
     margin-top: 30px;
 	border-radius: 8px;
 	z-index: 3;
+    height: fit-content;
+    padding-bottom: 10px;
 }
 
 .stats-title{
@@ -185,13 +187,34 @@ body {
     padding-left: 15px;
 }
 
-.stat-card{
-	height: 200px;
+.stat{
+    list-style-type: none;
+    padding-left: 25px;   
+    margin-bottom: 8px;  
+    display: flex;
+    flex-direction: row;
 }
 
-.abilities-card{
-    height: fit-content;
-    padding-bottom: 10px;
+.stat-name{
+    list-style-type: none;
+    text-transform: capitalize;
+    width: 110px;
+}
+
+.stat-bar-background{
+    display: none;
+    background-color: black;
+    filter: opacity(0.4);
+    height: 15px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.stat-bar{
+    border-radius: 15px;
+    background-color: green;
+    height: 15px;
+    width: 100%;
 }
 
 .abilities-list{
@@ -212,6 +235,7 @@ body {
     flex-direction: row;
     align-items: center;
     text-wrap: nowrap;
+    text-transform: capitalize;
 }
 
 .hidden{

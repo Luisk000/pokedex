@@ -16,7 +16,7 @@ function converPokeApiDetailToPokemon(pokeDetail) {
 function converterStats(pokeDetail){
     const stats = pokeDetail.stats.map((stat) => {
         const statModel = new Stat();
-        statModel.name = stat.stat.name;
+        statModel.name = stat.stat.name.replace("special-","Sp. ").replace("hp","HP");
         statModel.value = stat.base_stat;
         return statModel;
     });
@@ -26,7 +26,7 @@ function converterStats(pokeDetail){
 function converterAbilities(pokeDetail) {
     const abilities = pokeDetail.abilities.map((ability) => {
         const abilityModel = new Ability();
-        abilityModel.name = ability.ability.name;
+        abilityModel.name = ability.ability.name.replace("-"," ");
         abilityModel.isHidden = ability.is_hidden;
         return abilityModel;
     })
