@@ -9,7 +9,7 @@ function converPokeApiDetailToPokemon(pokeDetail) {
     pokemon.types = pokeDetail.types.map((typeSlot) => typeSlot.type.name);
     pokemon.type = pokemon.types[0];
     pokemon.stats = converterStats(pokeDetail);
-    console.log(pokemon.stats)
+    pokemon.abilities = converterAbilities(pokeDetail);
     return pokemon;
 }
 
@@ -21,6 +21,16 @@ function converterStats(pokeDetail){
         return statModel;
     });
     return stats;
+}
+
+function converterAbilities(pokeDetail) {
+    const abilities = pokeDetail.abilities.map((ability) => {
+        const abilityModel = new Ability();
+        abilityModel.name = ability.ability.name;
+        abilityModel.isHidden = ability.is_hidden;
+        return abilityModel;
+    })
+    return abilities;
 }
 
 pokeApi.getPokemonDetail = (pokemon) => {

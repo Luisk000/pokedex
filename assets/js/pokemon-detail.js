@@ -11,7 +11,7 @@ pokeballBackground.src = "images/pokeball.png"
 section.className = 'content details-content';
 section.id = 'detailScreen';
 
-pokemonDetails.loadPokemonDetails = () => {
+pokemonDetails.openDetailsScreen = () => {
     listItems = document.getElementById('pokemonList').querySelectorAll(':scope > li');
     selectedPokemon = null;
 
@@ -21,31 +21,6 @@ pokemonDetails.loadPokemonDetails = () => {
             verifyDetailsScreen(index)
         })
     })
-}
-
-function verifyDetailsScreen(id) {
-    //Isso não funciona, pois appendChild só aceita elementos DOM, e não html puro
-    // const section = `<section class="content"></section>`    
-
-    if (selectedPokemon != null)
-        pokemonDetails.closeDetailsScreen()
-    
-    if (selectedPokemon != id)
-        openDetailsScreen(id)
-    else
-        selectedPokemon = null;
-
-}
-
-function openDetailsScreen(id){
-    const pokemonList = document.getElementById('pokemonList')
-    if (!pokemonList.classList.contains('details-open-pokemon')){
-        pokemonList.className += " details-open-pokemon"
-    }
-
-    selectedPokemon = id;
-    document.getElementById('main').appendChild(section)
-    getSinglePokemon(id)
 }
 
 pokemonDetails.closeDetailsScreen = (pageChange = false) => {
@@ -64,41 +39,100 @@ pokemonDetails.closeDetailsScreen = (pageChange = false) => {
         selectedPokemon = null;
 }
 
-function getSinglePokemon(id){
-    pokeApi.getPokemons(offset + id, 1)
-    .then((pokemon) => {      
-        openDetailHtml(pokemon[0]);
+function verifyDetailsScreen(id) {
+    //Isso não funciona, pois appendChild só aceita elementos DOM, e não html puro
+    // const section = `<section class="content"></section>`    
+
+    if (selectedPokemon != null)
+        pokemonDetails.closeDetailsScreen()
+    
+    if (selectedPokemon != id)
+        preparePokemonScreen(id)
+    else
+        selectedPokemon = null;
+
+}
+
+function preparePokemonScreen(id){
+
+    const pokemonList = document.getElementById('pokemonList')
+    if (!pokemonList.classList.contains('details-open-pokemon'))
+        pokemonList.className += " details-open-pokemon"
+
+    selectedPokemon = id;
+    document.getElementById('main').appendChild(section)
+    mainContent.className = "content details-open-main";
+
+    getDetailHtml(id)
+}
+
+async function getDetailHtml(id){
+
+    const pokemon = pokeApi.getPokemons(offset + id, 1)
+        .then((pokemons) => pokemons[0])
+    
+    const html =  fetch('detail.html')
+        .then(response => response.text())
+
+    await Promise.all([pokemon, html])
+        .then(([pokemon, html]) => buildDetailHtml(pokemon, html))
+
+    //outra forma de fazer, menos legível
+    /* pokeApi.getPokemons(offset + id, 1)
+        .then((pokemons) => pokemons[0])
+        .then((pokemon) => {
+            fetch('detail.html')
+                .then(response => response.text())
+                .then(html => buildDetail(pokemon, html))
+        }) 
+    */
+}
+
+function buildDetailHtml(pokemon, html) {
+    console.log(pokemon)
+    // Card
+    const detailScreen = document.getElementById('detailScreen');
+    detailScreen.innerHTML = html;
+    detailScreen.className = `content details-content ${pokemon.type}-background`;
+
+    // Imagem de pokebola
+    const pokeballCard = document.getElementById('pokeball-card');
+    pokeballCard.appendChild(pokeballBackground);
+    
+    // Imagem do Pokémon
+    const pokemonImage = document.createElement('img')
+    pokemonImage.src = pokemon.photo;
+    pokemonImage.className = 'pokemon-image';
+
+    // Adiciona a imagem do Pokémon ao card
+    const imageCard = document.getElementById('image-card');
+    imageCard.appendChild(pokemonImage)
+
+    // Titulo
+    const pokemonTitle = document.getElementById('pokemon-title');
+    pokemonTitle.innerHTML = pokemon.name;
+
+    buildStatsHtml(pokemon)
+    buildAbilitiesHtml(pokemon)
+}
+
+function buildStatsHtml(pokemon){
+    const statCard = document.getElementById('stat-card');
+    pokemon.stats.map((stat) => {
+        statCard.innerHTML += `
+            <li>${stat.name} ${stat.value}</li>
+            `
     })
 }
 
-function openDetailHtml(pokemon){
-    fetch('detail.html')
-        .then(response => response.text())
-        .then(html => {
-            const detailScreen = document.getElementById('detailScreen');
-
-            detailScreen.innerHTML = html;
-            detailScreen.className = `content details-content ${pokemon.type}-background`;
-
-            const pokeballCard = document.getElementById('pokeball-card');
-            pokeballCard.appendChild(pokeballBackground);
-            
-            mainContent.className = "content details-open-main";
-            
-            const pokemonImage = document.createElement('img')
-            pokemonImage.src = pokemon.photo;
-            pokemonImage.className = 'pokemon-image';
-
-            const imageCard = document.getElementById('image-card');
-            imageCard.appendChild(pokemonImage)
-
-            const pokemonTitle = document.getElementById('pokemon-title');
-            pokemonTitle.innerHTML = pokemon.name;
-        })
-}
-
-function converterPokemonStatsHtml(pokemonStats) {
-    return pokemonStats.map((stat) => {
-        return `<li class="stat"></li>`
+function buildAbilitiesHtml(pokemon) {
+    const abilitiesCard = document.getElementById('abilities-list');
+    pokemon.abilities.map((ability) => {
+        hidden = '';
+        if (ability.isHidden)
+            hidden = `<div class='hidden'>hidden</div>`
+        abilitiesCard.innerHTML += `
+            <li class='ability'>${ability.name}${hidden}</li>
+        `
     })
 }

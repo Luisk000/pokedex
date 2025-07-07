@@ -37,7 +37,7 @@ function converterPokemonHtml(pokemon) {
 }
 
 function addPokemonDetailsScripts(){
-    pokemonDetails.loadPokemonDetails()
+    pokemonDetails.openDetailsScreen()
 }
 
 

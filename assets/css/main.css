@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-    background-color: #e4e4e4;;
+    background-color: #E6E6E6;
 }
 
 .main{
@@ -26,7 +26,7 @@ body {
 
 .content{
     padding: 1rem;
-    background-color: #fff;
+    background-color: white;
     width: 100vw;
     margin: 1rem auto;
     border-radius: 1rem;
@@ -145,14 +145,6 @@ body {
 	position: relative;
 }
 
-.stat-card{
-	background-color: rgb(236, 236, 236);
-	width: 94%;
-	height: 200px;
-	border-radius: 8px;
-	z-index: 3;
-}
-
 .pokeball-card{
 	width: 170px;
 	position: absolute;
@@ -176,4 +168,57 @@ body {
 
 .bottom{
     margin-top: 30px;
+}
+
+.card{
+	background-color: rgb(236, 236, 236);
+	width: 100%;
+    margin-top: 30px;
+	border-radius: 8px;
+	z-index: 3;
+}
+
+.stats-title{
+    color: black;
+    filter: opacity(0.6);
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.stat-card{
+	height: 200px;
+}
+
+.abilities-card{
+    height: fit-content;
+    padding-bottom: 10px;
+}
+
+.abilities-list{
+    display: flex;
+    gap: 8px 5%;
+    flex-wrap: wrap;
+}
+
+.ability{
+    list-style-type: none;
+    background-color: black;
+    filter: opacity(0.6);
+    color: white;
+    width: fit-content;
+    border-radius: 15px;
+    padding: 4px 15px 4px 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-wrap: nowrap;
+}
+
+.hidden{
+    background-color: red;
+    font-size: 12px;
+    color: white;
+    border-radius: 15px;
+    margin-left: 10px;
+    padding: 2px 8px 2px 8px;
 }
