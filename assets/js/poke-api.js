@@ -18,14 +18,13 @@ pokeApi.getPokemons = (offset = 0, limit = 20) => {
 }
 
 function converPokeApiDetailToPokemon(pokeDetail) {
-/*     if (pokeDetail.id == 3){
-        console.log(pokeDetail)
-        fetch(pokeDetail.species.url)
-            .then((response) => response.json())
-            .then((forms) => { console.log(forms) })
-    } */
-
     const pokemon = new Pokemon();
+    buildPokemon(pokemon, pokeDetail);
+    buildPokemonVariations(pokemon, pokeDetail);
+    return pokemon
+}
+
+function buildPokemon(pokemon, pokeDetail){
     pokemon.number = pokeDetail.id;
     pokemon.name = pokeDetail.name.replace("-"," ");
     pokemon.photo = pokeDetail.sprites.other["official-artwork"].front_default
@@ -33,8 +32,19 @@ function converPokeApiDetailToPokemon(pokeDetail) {
     pokemon.type = pokemon.types[0];
     pokemon.stats = converterStats(pokeDetail);
     pokemon.abilities = converterAbilities(pokeDetail);
-    getDadosComplexos(pokemon, pokeDetail)
-    return pokemon;
+}
+
+function buildPokemonVariations(pokemon, pokeDetail){
+    Promise.resolve(converterVariacoes(pokeDetail))
+        .then((variacoes) => {
+            pokemon.variations = variacoes;   
+            if (pokemon.variations != null){
+                pokemon.variations.map((variacao) => {
+                    variacao.variations = variacoes;
+                })
+            }
+
+        })
 }
 
 function converterStats(pokeDetail){
@@ -57,23 +67,30 @@ function converterAbilities(pokeDetail) {
     return abilities;
 }
 
-function getDadosComplexos(pokemon, pokeDetail){
-    pokemon.variations = converterVariacoes(pokeDetail);
-    console.log(pokemon.variations)
+function converterVariacoes(pokeDetail){
+    const variacoes = fetch(pokeDetail.species.url)
+        .then((response) => response.json())
+        .then((dados) => {
+            if (dados.varieties.length > 1)
+                return converterVariacoesParaPokemons(dados.varieties)
+            else
+                return null;
+        })
+
+    return variacoes;
 }
 
-function converterVariacoes(pokeDetail){
-    //Promise.all espera o que está dentro
-    const variations = fetch(pokeDetail.species.url)
-        .then((response) => response.json())
-        .then((dados) => Promise.all(dados.varieties.map((variacao) => 
-            fetch(variacao.pokemon.url)
-                .then((response) => response.json())
-                .then((variacao) => {                   
-                    return variacao
-                })
-        )))
-    
-    variations.then((result) => result)
+function converterVariacoesParaPokemons(variacoes){
+    const result = variacoes.map((variacao) => 
+        fetch(variacao.pokemon.url)
+            .then((response) => response.json())
+            .then((pokemonVariacao) => {
+                let pokemon = new Pokemon();
+                buildPokemon(pokemon, pokemonVariacao);
+                return pokemon;
+            })
+        )
+
+    return Promise.all(result)
 }
     

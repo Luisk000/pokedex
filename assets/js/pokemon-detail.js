@@ -113,6 +113,8 @@ function buildDetailHtml(pokemon, html) {
 
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
+    //if (pokemon.variations != null)
+        //buildVariationsHtml(pokemon)
 }
 
 function buildStatsHtml(pokemon){
@@ -147,12 +149,24 @@ function buildAbilitiesHtml(pokemon) {
 }
 
 function buildVariationsHtml(pokemon){
-    const variationsList = document.getElementById('variations-list');
-    pokemon.variationsList.map((variation) => {
-        variationsList.innerHTML += `
-            <div>
-                
+    const bottom = document.getElementById('bottom');
+    bottom.innerHTML += `
+            <div class="card">
+                <h3 class="card-title">Forms</h3>
+                <div class="variations-list" id="variations-list"></div>
             </div>
         `
-    })
+    const variationsList = document.getElementById('variations-list');
+    setTimeout(() => {
+        pokemon.variations.forEach((pokemonVariation) => {
+        console.log(pokemonVariation)
+        variationsList.innerHTML += `
+            <div class='variation'>
+                <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>
+                <p>${pokemonVariation.name}</p>
+            </div>
+        `
+        })
+    }, 10);
+    
 }
