@@ -1,7 +1,7 @@
 const pokeApi = {}
 
-pokeApi.getPokemonDetail = (pokemon) => {
-    return fetch(pokemon.url)
+pokeApi.getPokemonDetail = (url) => {
+    return fetch(url)
         .then((response) => response.json())
         .then((pokeDetail) => converPokeApiDetailToPokemon(pokeDetail))
 }
@@ -11,7 +11,9 @@ pokeApi.getPokemons = (offset = 0, limit = 20) => {
     return fetch(url)
         .then((response) => response.json()) // isso é um retorno, e após isso, a segeunda linha é executada
         .then((jsonBody) => jsonBody.results)
-        .then((pokemons) => pokemons.map(pokeApi.getPokemonDetail))
+        .then((pokemons) => pokemons.map(
+            (pokemon) => pokeApi.getPokemonDetail(pokemon.url))
+        )
         .then((detailRequests) => Promise.all(detailRequests))
         .then((pokemonDetails) => pokemonDetails)
         .catch((error) => console.log(error))

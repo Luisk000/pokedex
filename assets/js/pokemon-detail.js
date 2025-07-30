@@ -1,9 +1,11 @@
 let listItems = null;
+let listVariationItems = null;
 let selectedPokemon = null;
 
 const pokemonDetails = {}
 const pokeballBackground = document.createElement('img');
 const mainContent = document.getElementById('main-content')
+//const variation = documento.getElementById('')
 const section = document.createElement('section');
 
 pokeballBackground.src = "images/pokeball.png"
@@ -88,6 +90,19 @@ async function getDetailHtml(id){
     */
 }
 
+async function getVariationDetailHtml(number){
+    const url = `https://pokeapi.co/api/v2/pokemon/${number}/`
+
+    const pokemon = pokeApi.getPokemonDetail(url)
+        .then((pokemonDetail) => pokemonDetail)
+    
+    const html =  fetch('detail.html')
+        .then(response => response.text())
+
+    await Promise.all([pokemon, html])
+        .then(([pokemon, html]) => buildDetailHtml(pokemon, html))
+}
+
 function buildDetailHtml(pokemon, html) {
     // Card
     const detailScreen = document.getElementById('detailScreen');
@@ -158,16 +173,27 @@ function buildVariationsHtml(pokemon){
         `
     const variationsList = document.getElementById('variations-list');
     setTimeout(() => {
-        console.log(pokemon.variations)
-        pokemon.variations.shift()
+        const variacaoAtual = pokemon.variations.findIndex(p => p.number == pokemon.number)
+        pokemon.variations.splice(variacaoAtual, 1)
         pokemon.variations.forEach((pokemonVariation) => {
-        variationsList.innerHTML += `
-            <div class='variation'>
-                <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>             
-                <p class='variation-name'>${pokemonVariation.name}</p>
-            </div>
-        `
+            variationsList.innerHTML += `
+                <div class='variation' id='pokemon${pokemonVariation.number}' number='${pokemonVariation.number}'>
+                    <div class="variation-img-backgroung">
+                        <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>
+                    </div>                     
+                    <p class='variation-name'>${pokemonVariation.name}</p>
+                </div>
+            `
         })
+
+        listVariationItems = variationsList.querySelectorAll(":scope > div")
+        listVariationItems.forEach((item) => {
+            const number = item.getAttribute('number');
+            item.addEventListener('click', () => {
+                getVariationDetailHtml(number)
+            })
+        })
+
     }, 10);
     
 }

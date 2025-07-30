@@ -132,11 +132,14 @@
 }
 
 .variation img{
-    background-color: white;
     padding: 5px;
     height: 80px;
-    border-radius: 8px;
     cursor: pointer;
+}
+
+.variation-img-backgroung{
+    background-color: white;
+    border-radius: 8px;
 }
 
 .variation img:hover{
