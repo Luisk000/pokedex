@@ -169,7 +169,9 @@ async function buildAbilitiesHtml(pokemon) {
         abilitiesCard.innerHTML += `
             <li class='ability'>
                 <div class='ability-name'>${ability.name}</div>${hidden}
-                <div class='ability-info-box'></div>
+                <div class='ability-info-box'>
+                   ${descriptions[index]}
+                </div>
             </li>
         `
     })

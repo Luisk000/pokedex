@@ -70,6 +70,10 @@
             order: 2;
         }
     }
+
+    .ability-info-box{
+        min-width: 165px;
+    }
 }
 
 @media screen and (min-width: 500px){
@@ -91,6 +95,11 @@
         margin-left: 10px;
         padding: 2px 8px 2px 8px;
         margin-right: 4px;
+    }
+
+    .ability-info-box{
+        margin-top: 25px;
+        min-width: 190px;
     }
 }
 
