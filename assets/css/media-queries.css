@@ -9,6 +9,16 @@
 
 }
 
+@media screen and (min-width: 400px){
+    .variation img{
+        height: 110px;
+    }
+
+    .variation-name{
+        font-size: 14px;
+    }
+}
+
 @media screen and (min-width: 420px){
 	.pokemons {
         grid-template-columns: 1fr 1fr;
@@ -82,8 +92,12 @@
         padding: 2px 8px 2px 8px;
         margin-right: 4px;
     }
+}
 
-
+@media screen and (min-width: 550px){
+    .variation{
+        width: 50%;
+    }
 }
 
 @media screen and (min-width: 600px){
@@ -143,6 +157,18 @@
         width: 350px;
         margin-top: 10px;
     }
+
+    .variation {
+        width: 175px;
+    }
+
+    .variation img{
+        height: 150px;
+    }
+
+    .variation-name{
+        font-size: 15px;
+    }
 }
 
 @media screen and (min-width: 900px){
@@ -152,6 +178,18 @@
 
     .stat-bar-background{
         width: 56%;
+    }
+
+    .variation {
+        width: 199px;
+    }
+
+    .variation img{
+        height: 170px;
+    }
+
+     .variation-name{
+        font-size: 16px;
     }
 }
 

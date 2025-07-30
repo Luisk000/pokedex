@@ -116,3 +116,36 @@
     margin-right: 2px;
     margin-left: -5px;
 }
+
+.variations-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.variation{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;     
+}
+
+.variation img{
+    background-color: white;
+    padding: 5px;
+    height: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.variation img:hover{
+    transform: scale(1.1);
+}
+
+.variation-name{
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 13px;
+    margin: 10px;
+}

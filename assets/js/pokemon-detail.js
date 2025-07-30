@@ -113,8 +113,8 @@ function buildDetailHtml(pokemon, html) {
 
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
-    //if (pokemon.variations != null)
-        //buildVariationsHtml(pokemon)
+    if (pokemon.variations != null)
+        buildVariationsHtml(pokemon)
 }
 
 function buildStatsHtml(pokemon){
@@ -158,12 +158,13 @@ function buildVariationsHtml(pokemon){
         `
     const variationsList = document.getElementById('variations-list');
     setTimeout(() => {
+        console.log(pokemon.variations)
+        pokemon.variations.shift()
         pokemon.variations.forEach((pokemonVariation) => {
-        console.log(pokemonVariation)
         variationsList.innerHTML += `
             <div class='variation'>
-                <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>
-                <p>${pokemonVariation.name}</p>
+                <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>             
+                <p class='variation-name'>${pokemonVariation.name}</p>
             </div>
         `
         })
