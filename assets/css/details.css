@@ -79,6 +79,14 @@
     min-width: 15px;
 }
 
+.stats-total{
+    font-weight: bold;
+}
+
+.invisible-bar{
+    background-color: #ECECEC;
+}
+
 .abilities-list{
     display: flex;
     gap: 8px 5%;
@@ -99,6 +107,11 @@
     align-items: center;
     text-wrap: nowrap;
     font-size: 12px;
+    cursor: default;
+    position: relative;
+}
+
+.ability-info-box{
 }
 
 .ability-name{

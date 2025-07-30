@@ -5,7 +5,6 @@ let selectedPokemon = null;
 const pokemonDetails = {}
 const pokeballBackground = document.createElement('img');
 const mainContent = document.getElementById('main-content')
-//const variation = documento.getElementById('')
 const section = document.createElement('section');
 
 pokeballBackground.src = "images/pokeball.png"
@@ -21,16 +20,16 @@ pokemonDetails.openDetailsScreen = () => {
         item.id = 'pokemon' + index;
         item.addEventListener('click', () => {
             verifyDetailsScreen(index)
+            window.scrollTo(0, 0);
         })
     })
 }
 
 pokemonDetails.closeDetailsScreen = (pageChange = false) => {
     const pokemonList = document.getElementById('pokemonList')
-    if (pokemonList.classList.contains('details-open-pokemon')){
+    if (pokemonList.classList.contains('details-open-pokemon'))
         pokemonList.classList.remove('details-open-pokemon')
-    }
-
+    
     mainContent.className = "content";
 
     const screen = document.getElementById('detailScreen')
@@ -69,7 +68,6 @@ function preparePokemonScreen(id){
 }
 
 async function getDetailHtml(id){
-
     const pokemon = pokeApi.getPokemons(offset + id, 1)
         .then((pokemons) => pokemons[0])
     
@@ -128,14 +126,16 @@ function buildDetailHtml(pokemon, html) {
 
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
-    if (pokemon.variations != null)
+    if (pokemon.variations.length > 1)
         buildVariationsHtml(pokemon)
 }
 
 function buildStatsHtml(pokemon){
+    let statTotal = 0;
     const statCard = document.getElementById('stat-card');
     pokemon.stats.map((stat) => {
         let width = stat.value * 100 / 255; 
+        statTotal += stat.value;
 
         statCard.innerHTML += `
             <li class='stat'>
@@ -147,20 +147,46 @@ function buildStatsHtml(pokemon){
             </li>
             `
     })
+
+    statCard.innerHTML += `
+        <li class='stat stats-total'>
+            <div class='stat-name'>Total</div>
+            <div class='stat-bar-background invisible-bar'></div>
+            <div class='stat-value'>${statTotal}</div>     
+        </li>
+    `
 }
 
-function buildAbilitiesHtml(pokemon) {
+async function buildAbilitiesHtml(pokemon) {
+    const descriptions = await getAbilitysDescription(pokemon.abilities)
+
     const abilitiesCard = document.getElementById('abilities-list');
-    pokemon.abilities.map((ability) => {
+    pokemon.abilities.map(async (ability, index) => {
         hidden = '';
         if (ability.isHidden)
             hidden = `<div class='hidden'>hidden</div>`
+
         abilitiesCard.innerHTML += `
             <li class='ability'>
                 <div class='ability-name'>${ability.name}</div>${hidden}
+                <div class='ability-info-box'></div>
             </li>
         `
     })
+}
+
+async function getAbilitysDescription(abilities){
+    const descriptions = abilities.map(async (ability) => {
+        const name = ability.name.replace(" ","-")
+        let url = `https://pokeapi.co/api/v2/ability/${name}`
+        return fetch(url)
+            .then((response) => response.json())
+            .then((habilidade) => 
+                habilidade.effect_entries.find(h => h.language.name == 'en').effect)
+    })
+
+    let result = await Promise.all(descriptions)
+    return result;
 }
 
 function buildVariationsHtml(pokemon){
@@ -172,28 +198,27 @@ function buildVariationsHtml(pokemon){
             </div>
         `
     const variationsList = document.getElementById('variations-list');
-    setTimeout(() => {
-        const variacaoAtual = pokemon.variations.findIndex(p => p.number == pokemon.number)
-        pokemon.variations.splice(variacaoAtual, 1)
-        pokemon.variations.forEach((pokemonVariation) => {
-            variationsList.innerHTML += `
-                <div class='variation' id='pokemon${pokemonVariation.number}' number='${pokemonVariation.number}'>
-                    <div class="variation-img-backgroung">
-                        <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>
-                    </div>                     
-                    <p class='variation-name'>${pokemonVariation.name}</p>
-                </div>
-            `
-        })
+    const variacaoAtual = pokemon.variations.findIndex(p => p.number == pokemon.number)
 
-        listVariationItems = variationsList.querySelectorAll(":scope > div")
-        listVariationItems.forEach((item) => {
-            const number = item.getAttribute('number');
-            item.addEventListener('click', () => {
-                getVariationDetailHtml(number)
-            })
-        })
+    pokemon.variations.splice(variacaoAtual, 1)
+    pokemon.variations.forEach((pokemonVariation) => {
+        variationsList.innerHTML += `
+            <div class='variation' id='pokemon${pokemonVariation.number}' number='${pokemonVariation.number}'>
+                <div class="variation-img-backgroung">
+                    <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>
+                </div>                     
+                <p class='variation-name'>${pokemonVariation.name}</p>
+            </div>
+        `
+    })
 
-    }, 10);
+    listVariationItems = variationsList.querySelectorAll(":scope > div")
+    listVariationItems.forEach((item) => {
+        const number = item.getAttribute('number');
+        item.addEventListener('click', () => {
+            getVariationDetailHtml(number)
+            window.scrollTo(0, 0);
+        })
+    })
     
 }
