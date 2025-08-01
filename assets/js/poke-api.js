@@ -21,7 +21,8 @@ pokeApi.getPokemons = (offset = 0, limit = 20) => {
 async function convertPokeApiDetailToPokemon(pokeDetail) {
     const pokemon = new Pokemon();
     buildPokemon(pokemon, pokeDetail)
-    return buildPokemonVariations(pokemon, pokeDetail)
+    await buildDadosComplexos(pokemon, pokeDetail);
+    return pokemon
 }
 
 function buildPokemon(pokemon, pokeDetail){
@@ -32,20 +33,6 @@ function buildPokemon(pokemon, pokeDetail){
     pokemon.type = pokemon.types[0];
     pokemon.stats = converterStats(pokeDetail);
     pokemon.abilities = converterAbilities(pokeDetail);
-}
-
-async function buildPokemonVariations(pokemon, pokeDetail){
-    await converterVariacoes(pokeDetail)
-        .then((result) => Promise.all(result))
-        .then((variacoes) => {
-            pokemon.variations = variacoes;   
-            if (pokemon.variations != null){
-                pokemon.variations.map((variacao) => {
-                    variacao.variations = variacoes;
-                })
-            }
-        })
-    return pokemon
 }
 
 function converterStats(pokeDetail){
@@ -68,20 +55,31 @@ function converterAbilities(pokeDetail) {
     return abilities;
 }
 
-async function converterVariacoes(pokeDetail){
+async function buildDadosComplexos(pokemon, pokeDetail){
     return fetch(pokeDetail.species.url)
         .then((response) => response.json())
-        .then((dados) => {
-            if (dados.varieties && dados.varieties.length > 1)
-                return converterVariacoesParaPokemons(dados.varieties)
-            else
-                return [];
+        .then(async (dados) => {
+            const variacoes = converterVaricoes(pokemon, dados)
+            const evolucoes = converterEvolucoes()
+
+            await Promise.all([variacoes, evolucoes])
         })
     
 }
 
-async function converterVariacoesParaPokemons(variacoes){
-    const result = variacoes.map((variacao) => 
+async function converterVaricoes(pokemon, dados){ 
+    if (dados.varieties && dados.varieties.length > 1)
+        return converterVariacoesParaPokemons(pokemon, dados.varieties)
+    else
+        return "";
+}
+
+async function converterEvolucoes(){
+    return "";
+}
+
+async function converterVariacoesParaPokemons(pokemon, variacoes){
+    const variacoesFormatadas = variacoes.map((variacao) => 
         fetch(variacao.pokemon.url)
             .then((response) => response.json())
             .then((pokemonVariacao) => {
@@ -91,7 +89,13 @@ async function converterVariacoesParaPokemons(variacoes){
             })
         )
 
-    await Promise.all(result);
-    return result;
+    //Acho que há um problema aqui
+    await Promise.all(variacoesFormatadas);
+    pokemon.variations = variacoesFormatadas;   
+        console.log(pokemon.variations)
+    if (pokemon.variations != null)
+        pokemon.variations.map((variacao) => variacao.variations = variacoes)
+    
+    return "";
 }
     

@@ -41,9 +41,6 @@ pokemonDetails.closeDetailsScreen = (pageChange = false) => {
 }
 
 function verifyDetailsScreen(id) {
-    //Isso não funciona, pois appendChild só aceita elementos DOM, e não html puro
-    // const section = `<section class="content"></section>`    
-
     if (selectedPokemon != null)
         pokemonDetails.closeDetailsScreen()
     
@@ -51,7 +48,6 @@ function verifyDetailsScreen(id) {
         preparePokemonScreen(id)
     else
         selectedPokemon = null;
-
 }
 
 function preparePokemonScreen(id){
@@ -76,16 +72,6 @@ async function getDetailHtml(id){
 
     await Promise.all([pokemon, html])
         .then(([pokemon, html]) => buildDetailHtml(pokemon, html))
-
-    //outra forma de fazer, menos legível
-    /* pokeApi.getPokemons(offset + id, 1)
-        .then((pokemons) => pokemons[0])
-        .then((pokemon) => {
-            fetch('detail.html')
-                .then(response => response.text())
-                .then(html => buildDetail(pokemon, html))
-        }) 
-    */
 }
 
 async function getVariationDetailHtml(number){
