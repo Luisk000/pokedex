@@ -59,43 +59,70 @@ async function buildDadosComplexos(pokemon, pokeDetail){
     return fetch(pokeDetail.species.url)
         .then((response) => response.json())
         .then(async (dados) => {
-            const variacoes = converterVaricoes(pokemon, dados)
-            const evolucoes = converterEvolucoes()
+            const variacoes = 
+                dados.varieties.length == 1 ? "" :
+                getVariacoes(pokemon, dados)
+
+            const evolucoes = getEvolucoes(pokemon, dados)
 
             await Promise.all([variacoes, evolucoes])
         })
-    
 }
 
-async function converterVaricoes(pokemon, dados){ 
-    if (dados.varieties && dados.varieties.length > 1)
-        return converterVariacoesParaPokemons(pokemon, dados.varieties)
-    else
-        return "";
-}
-
-async function converterEvolucoes(){
-    return "";
-}
-
-async function converterVariacoesParaPokemons(pokemon, variacoes){
-    const variacoesFormatadas = variacoes.map((variacao) => 
+async function getVariacoes(pokemon, dados){ 
+    const variacoesPromise = dados.varieties.map((variacao) => 
         fetch(variacao.pokemon.url)
             .then((response) => response.json())
-            .then((pokemonVariacao) => {
+            .then((pokemonDados) => {
                 let pokemon = new Pokemon();
-                buildPokemon(pokemon, pokemonVariacao);
+                buildPokemon(pokemon, pokemonDados);
                 return pokemon;
             })
-        )
+    )
 
-    //Acho que há um problema aqui
-    await Promise.all(variacoesFormatadas);
-    pokemon.variations = variacoesFormatadas;   
-        console.log(pokemon.variations)
-    if (pokemon.variations != null)
-        pokemon.variations.map((variacao) => variacao.variations = variacoes)
-    
-    return "";
+    //#region 
+        //A mesma coisa com then
+        /* await Promise.all(variacoesPromise).then((variacoesFormatadas) => {
+            if (variacoesFormatadas != null){
+                pokemon.variations = variacoesFormatadas;   
+                pokemon.variations.map((variacao) => variacao.variations = variacoes)
+            }
+        }); */
+        //#endregion      
+
+    pokemon.variations = await Promise.all(variacoesPromise);
+    pokemon.variations.map((variacao) => variacao.variations = variacao)
+}
+
+
+async function getEvolucoes(pokemon, dados){
+    if (pokemon.number <= 3){
+        const evolutionChain = fetch(dados.evolution_chain.url)
+            .then((result) => result.json())
+            .then((evolutionChain) => buildEvolutionChain(pokemon, evolutionChain.chain))
+    }
+}
+
+async function buildEvolutionChain(pokemon, chain){
+    let pokemons = [];
+
+    verifyEvolvesTo(pokemons, chain);
+}
+
+async function verifyEvolvesTo(pokemons, chain){
+    fetch(chain.species.url)
+        .then((result) => result.json())
+        .then((pokemonDados) => {
+            let pokemon = new Pokemon();
+            console.log(pokemonDados)
+            //buildPokemon(pokemon, pokemonDados);
+            pokemons.push(pokemon)
+        })
+
+    if (chain.evolves_to.length > 0){
+        chain.evolves_to.forEach((pokemonChain) => {
+            verifyEvolvesTo(pokemons, pokemonChain)
+        })
+    }
 }
     

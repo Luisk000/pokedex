@@ -8,5 +8,5 @@ class Pokemon {
     abilities = new Array();
     moves = new Array();
     variations = new Array();
-    evolutions = new Array();
+    evolvesTo = new Array();
 }
