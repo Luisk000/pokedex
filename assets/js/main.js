@@ -27,10 +27,10 @@ function converterPokemonHtml(pokemon) {
                 <span class="number">#${pokemon.number}</span>
                 <span class="name">${pokemon.name}</span>         
                 <div class="detail">
+                    <img src="${pokemon.photo}" alt="${pokemon.name}">
                     <ol class="types">
                         ${converterPokemonTypesHtml(pokemon.types).join('')}
                     </ol>
-                    <img src="${pokemon.photo}" alt="${pokemon.name}">
                 </div>
             </li>
             `
@@ -70,24 +70,3 @@ lastPageButton.addEventListener('click', () => {
 })
 
 getPokemon();
-
-
-
-
-/* fetch(url).then(
-    function (response) {
-        response.json().then(function (responseBody) {
-            console.log(responseBody)
-        })
-    }
-)
-.catch(
-    function(error){
-        console.log(error)
-    }
-)
-.finally(
-    function() {
-        console.log("Requisição concluída")
-    }
-) */

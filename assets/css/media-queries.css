@@ -1,4 +1,8 @@
 @media screen and (min-width: 380px){
+    .stat{
+        gap: 0px;
+    }
+
     .stat-name{
         width: 110px;
     }
@@ -7,82 +11,106 @@
         font-size: 16px;
     }
 
+    .ability{
+        font-size: 16px;
+    }
+
 }
 
 @media screen and (min-width: 400px){
-    .variation img{
+    .variation-img-background, .evolution-img-background{
         height: 110px;
     }
 
-    .variation-name{
+    .variation-name, .evolution-name{
         font-size: 14px;
+    }
+
+    .pokemon{
+        min-width: 165px;
+    }
+
+    .name{
+        align-self: left;
+    }
+
+    .detail{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .types{
+        flex-direction: column;
+        align-self: left;
+        order: 2;
+    }  
+
+    .pokemon .detail img{
+        max-width: none;
+        align-self: right;
+        order: 2;
     }
 }
 
 @media screen and (min-width: 420px){
-	.pokemons {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .details-open-pokemon{
-        grid-template-columns: 1fr;
-    }
-    
     .pokeball-card{
 		width: 220px;
 	}
 }
 
 @media screen and (min-width: 450px){
-
-    .details-open-main{
-        width: 100%;
-    }
-
-    .pokemon{
-        min-width: 170px;
-    }
-
-    .details-open-pokemon{
-        .pokemon{
-            width: auto;
-        }
-
-        .name{
-            align-self: left;
-        }
-
-        .detail{
-            display: flex;
-            flex-direction: row;
-        }
-
-        .types{
-            flex-direction: column;
-            align-self: left;
-            order: 1;
-        }  
-
-        .pokemon .detail img{
-            max-width: none;
-            height: 80px;
-            align-self: right;
-            order: 2;
-        }
-    }
-
-    .ability-info-box{
-        min-width: 165px;
-    }
 }
 
 @media screen and (min-width: 500px){
-    .abilities-list{
-        margin-right: 15px;
+    .main{
+        order: 1
     }
 
-    .ability{
-        font-size: 16px;
+    .details-content{
+        order: 2
+    }
+
+    .pokemons{
+        grid-template-columns: 1fr;
+    }
+
+    .main{
+        flex-direction: row;
+    }
+
+    .pokemon{
+        min-width: unset;
+        width: 120px;
+    }
+
+    .content{
+        width: fit-content;
+    }
+
+    .name{
+        align-self: center;
+    }
+
+    .detail{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .types{
+        display: flex;;
+        flex-direction: row;
+        align-self: center;
+        order: 2;
+    }  
+
+    .pokemon .detail img{
+        max-width: 100%;
+        align-self: center;
+        order: 1;
+    }
+
+    .abilities-list{
+        margin-right: 15px;
     }
 
     .ability-name{
@@ -101,12 +129,18 @@
         margin-top: 27px;
         min-width: 190px;
     }
+
+    .content{
+        margin: 1rem auto;
+    }
 }
 
 @media screen and (min-width: 550px){
-    .variation{
+    .variation, .evolution{
         width: 50%;
     }
+
+
 }
 
 @media screen and (min-width: 600px){
@@ -121,26 +155,15 @@
 }
 
 @media screen and (min-width: 650px){
-    .stat-bar-background{
-        display: flex;
-        width: 30%;
-    }
+
 }
 
 @media screen and (min-width: 700px){
     .pokeball-card{
         width: 280px;
     }
-    
-    .image-card{
-        margin-top: 0px;
-    }
 
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .details-open-pokemon{
+    .pokemons{
         grid-template-columns: 1fr 1fr;
     }
 
@@ -155,27 +178,22 @@
     .pokeball-card{
         width: 300px;
     }
-
-    .stat-bar-background{
-        width: 42%;
-    }
 }
 
 @media screen and (min-width: 790px){
     .image-card{
         width: 350px;
-        margin-top: 10px;
     }
 
-    .variation {
+    .variation, .evolution{
         width: 175px;
     }
 
-    .variation img{
+    .variation-img-background, .evolution-img-background{
         height: 150px;
     }
 
-    .variation-name{
+    .variation-name, .evolution-name{
         font-size: 15px;
     }
 }
@@ -189,15 +207,15 @@
         width: 56%;
     }
 
-    .variation {
+    .variation, .evolution {
         width: 199px;
     }
 
-    .variation img{
+    .variation-img-background, .evolution-img-background{
         height: 170px;
     }
 
-     .variation-name{
+     .variation-name, .evolution-name{
         font-size: 16px;
     }
 }
@@ -214,10 +232,6 @@
     }
 
     .pokemons {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
-    .details-open-pokemon{
         grid-template-columns: 1fr 1fr 1fr;
     }
 }

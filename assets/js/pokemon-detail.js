@@ -26,10 +26,6 @@ pokemonDetails.openDetailsScreen = () => {
 }
 
 pokemonDetails.closeDetailsScreen = (pageChange = false) => {
-    const pokemonList = document.getElementById('pokemonList')
-    if (pokemonList.classList.contains('details-open-pokemon'))
-        pokemonList.classList.remove('details-open-pokemon')
-    
     mainContent.className = "content";
 
     const screen = document.getElementById('detailScreen')
@@ -51,14 +47,9 @@ function verifyDetailsScreen(id) {
 }
 
 function preparePokemonScreen(id){
-
-    const pokemonList = document.getElementById('pokemonList')
-    if (!pokemonList.classList.contains('details-open-pokemon'))
-        pokemonList.className += " details-open-pokemon"
-
     selectedPokemon = id;
     document.getElementById('main').appendChild(section)
-    mainContent.className = "content details-open-main";
+    //mainContent.className = "content details-open-main";
 
     getDetailHtml(id)
 }
@@ -195,11 +186,11 @@ function buildEvolutionsHtml(pokemon){
     pokemon.evolutionChain.pokemons.forEach((pokemonEvolution) => {
         evolutionsList.innerHTML += `
             <div class="evolution-arrow" id="evolution-arrow-${pokemonEvolution.number}"></div>
-            <div class='variation' id='pokemon${pokemonEvolution.number}' number='pokemon${pokemonEvolution.number}'>         
-                <div class="variation-img-backgroung">
+            <div class='evolution' id='pokemon${pokemonEvolution.number}' number='pokemon${pokemonEvolution.number}'>         
+                <div class="evolution-img-background">
                     <img src='${pokemonEvolution.photo}' ref='${pokemonEvolution.photo}'>
                 </div>
-                <p class='variation-name'>${pokemonEvolution.name}</p>           
+                <p class='evolution-name'>${pokemonEvolution.name}</p>           
             </div>
         `
     })
@@ -228,7 +219,7 @@ function buildVariationsHtml(pokemon){
     pokemon.variations.forEach((pokemonVariation) => {
         variationsList.innerHTML += `
             <div class='variation' id='pokemon${pokemonVariation.number}' number='${pokemonVariation.number}'>
-                <div class="variation-img-backgroung">
+                <div class="variation-img-background">
                     <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>
                 </div>                     
                 <p class='variation-name'>${pokemonVariation.name}</p>

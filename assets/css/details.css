@@ -1,5 +1,7 @@
 .details-content{
 	position: relative;
+    order: 1;
+    margin: 1rem auto;
 }
 
 .bottom{
@@ -7,7 +9,7 @@
 }
 
 .pokeball-card{
-	width: 170px;
+	width: 260px;
 	position: absolute;
 	filter: invert(1) opacity(0.2);
 	right: 2%;
@@ -18,9 +20,11 @@
 .image-card{
 	position: relative;
 	justify-self: center;
-    width: 100%;
+    width: 95%;
+    max-width: 260px;
     transform: scale(1.15);
 	z-index: 2;
+    margin-top: 10px;
 }
 
 .pokemon-title{
@@ -50,6 +54,7 @@
     margin-bottom: 8px;  
     display: flex;
     flex-direction: row;
+    gap: 8px;
 }
 
 .stat-name{
@@ -58,17 +63,17 @@
     width: 80px;
 }
 
-.stat-name, .stat-value{
-    font-size: 12px;
+.stat-name, .stat-value, .ability{
+    font-size: 14px;
 }
 
 .stat-bar-background{
-    display: none;
     background-color: black;
     filter: opacity(0.4);
     height: 15px;
     border-radius: 15px;
     margin-right: 10px;
+    width: 46%;
 }
 
 .stat-bar{
@@ -105,7 +110,6 @@
     flex-direction: row;
     align-items: center;
     text-wrap: nowrap;
-    font-size: 12px;
     cursor: default;
     position: relative;
 }
@@ -146,34 +150,41 @@
 .variations-list, .evolutions-list{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
+    overflow: auto;
+    white-space: nowrap;
+    padding-right: 20px; 
 }
 
-.variation{
-    width: 100%;
+.variation, .evolution{
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;     
+    text-align: center;    
 }
 
-.variation img{
+.variation{
+    padding-left: 15px;
+}
+
+.variation img, .evolution img{
     padding: 5px;
-    height: 80px;
     cursor: pointer;
+    display: block;
 }
 
-.variation-img-backgroung{
+.variation-img-background, .evolution-img-background{
     background-color: white;
     border-radius: 8px;
+    height: 100px;
+    width: 100px;
 }
 
-.variation img:hover{
+.variation img:hover, .evolution img:hover{
     transform: scale(1.1);
 }
 
-.variation-name{
+.variation-name, .evolution-name{
     text-transform: capitalize;
     font-weight: 500;
     font-size: 13px;
@@ -181,6 +192,7 @@
 }
 
 .evolution-arrow{
-    font-size: 50px;
+    font-size: 30px;
     margin-top: -32px;
+    padding: 10px;
 }

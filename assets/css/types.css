@@ -4,7 +4,7 @@
 }
 
 .psychic{
-    background-color: rgb(250 115 120);
+    background-color: rgb(240 115 120);
     color: white;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .psychic-light{
-    background-color: rgb(250, 115, 120, 0.6);
+    background-color: rgb(240, 115, 120, 0.6);
     color: white;
 }
 
@@ -179,84 +179,84 @@
 } */
 
 .fighting-background{
-    background: linear-gradient(to bottom, rgb(208 64 106) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(208 64 106) 210px, white 240px);
 }
 
 .psychic-background{
-    background: linear-gradient(to bottom, rgb(250 115 120) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(240 115 120) 210px, white 240px);
 }
 
 .poison-background{
-    background: linear-gradient(to bottom, rgb(171 106 201) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(171 106 201) 210px, white 240px);
 }
 
 .dragon-background{
-    background: linear-gradient(to bottom, rgb(13 109 200) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(13 109 200) 210px, white 240px);
 }
 
 .ghost-background{
-    background: linear-gradient(to bottom, rgb(82 107 174) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(82 107 174) 210px, white 240px);
 }
 
 .dark-background{
-    background: linear-gradient(to bottom, rgb(92 84 103) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(92 84 103) 210px, white 240px);
 }
 
 .ground-background{
-    background: linear-gradient(to bottom, rgb(219 121 70) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(219 121 70) 210px, white 240px);
 }
 
 .fire-background{
-    background: linear-gradient(to bottom, rgb(255 156 85) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(255 156 85) 210px, white 240px);
 }
 
 .fairy-background{
-    background: linear-gradient(to bottom, rgb(235 143 229) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(235 143 229) 210px, white 240px);
 }
 
 .water-background{
-    background: linear-gradient(to bottom, rgb(77 144 212) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(77 144 212) 210px, white 240px);
 }
 
 .flying-background{
-    background: linear-gradient(to bottom, rgb(144 169 222) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(144 169 222) 210px, white 240px);
 }
 
 .normal-background{
-    background: linear-gradient(to bottom, #8F99A1 160px, white 160px);
+    background: linear-gradient(to bottom, #8F99A1 210px, white 240px);
 }
 
 .rock-background{
-    background: linear-gradient(to bottom, rgb(197 184 138) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(197 184 138) 210px, white 240px);
 }
 
 .electric-background{
-    background: linear-gradient(to bottom, rgb(243 210 59) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(243 210 59) 210px, white 240px);
 }
 
 .bug-background{
-    background: linear-gradient(to bottom, rgb(144 194 45) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(144 194 45) 210px, white 240px);
 }
 
 .grass-background{
-    background: linear-gradient(to bottom, rgb(99 188 92) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(99 188 92) 210px, white 240px);
 }
 
 .ice-background{
-    background: linear-gradient(to bottom, rgb(118 206 192) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(118 206 192) 210px, white 240px);
 }
 
 .steel-background{
-    background: linear-gradient(to bottom, rgb(91 144 163) 160px, white 160px);
+    background: linear-gradient(to bottom, rgb(91 144 163) 210px, white 240px);
 }
 
-@media screen and (min-width: 390px){
+@media screen and (min-width: 400px){
      .fighting-background{
         background: linear-gradient(to bottom, rgb(208 64 106) 185px, white 185px);
     }
 
     .psychic-background{
-        background: linear-gradient(to bottom, rgb(250 115 120) 185px, white 185px);
+        background: linear-gradient(to bottom, rgb(240 115 120) 185px, white 185px);
     }
 
     .poison-background{
@@ -330,7 +330,7 @@
     }
 
     .psychic-background{
-        background: linear-gradient(to bottom, rgb(250 115 120) 245px, white 245px);
+        background: linear-gradient(to bottom, rgb(240 115 120) 245px, white 245px);
     }
 
     .poison-background{
@@ -404,7 +404,7 @@
     }
 
     .psychic-background{
-        background: linear-gradient(to bottom, rgb(250 115 120) 300px, white 300px);
+        background: linear-gradient(to bottom, rgb(240 115 120) 300px, white 300px);
     }
 
     .poison-background{
