@@ -147,6 +147,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .variation{
@@ -177,4 +178,9 @@
     font-weight: 500;
     font-size: 13px;
     margin: 10px;
+}
+
+.evolution-arrow{
+    font-size: 50px;
+    margin-top: -32px;
 }

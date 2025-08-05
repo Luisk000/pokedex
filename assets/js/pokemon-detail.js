@@ -186,10 +186,30 @@ function buildEvolutionsHtml(pokemon){
     const bottom = document.getElementById('bottom');
     bottom.innerHTML += `
             <div class="card">
-                <h3 class="card-title">Forms</h3>
+                <h3 class="card-title">Evolution Chain</h3>
                 <div class="evolutions-list" id="evolutions-list"></div>
             </div>
         `
+    const evolutionsList = document.getElementById('evolutions-list')
+
+    pokemon.evolutionChain.pokemons.forEach((pokemonEvolution) => {
+        evolutionsList.innerHTML += `
+            <div class="evolution-arrow" id="evolution-arrow-${pokemonEvolution.number}"></div>
+            <div class='variation' id='pokemon${pokemonEvolution.number}' number='pokemon${pokemonEvolution.number}'>         
+                <div class="variation-img-backgroung">
+                    <img src='${pokemonEvolution.photo}' ref='${pokemonEvolution.photo}'>
+                </div>
+                <p class='variation-name'>${pokemonEvolution.name}</p>           
+            </div>
+        `
+    })
+
+    pokemon.evolutionChain.pokemons.forEach((pokemonEvolution, index) => {
+        if (index > 0){
+            const arrow = document.getElementById(`evolution-arrow-${pokemonEvolution.number}`)
+            arrow.innerHTML = "&#8594"
+        }     
+    })
 }
 
 function buildVariationsHtml(pokemon){
