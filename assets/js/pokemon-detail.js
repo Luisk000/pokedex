@@ -112,6 +112,11 @@ function buildDetailHtml(pokemon, html) {
 
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
+    
+    console.log(pokemon.evolutionChain)
+
+    if (pokemon.evolutionChain.pokemons.length > 1)
+        buildEvolutionsHtml(pokemon)
     if (pokemon.variations.length > 1)
         buildVariationsHtml(pokemon)
 }
@@ -177,6 +182,16 @@ async function getAbilitysDescription(abilities){
     return result;
 }
 
+function buildEvolutionsHtml(pokemon){
+    const bottom = document.getElementById('bottom');
+    bottom.innerHTML += `
+            <div class="card">
+                <h3 class="card-title">Forms</h3>
+                <div class="evolutions-list" id="evolutions-list"></div>
+            </div>
+        `
+}
+
 function buildVariationsHtml(pokemon){
     const bottom = document.getElementById('bottom');
     bottom.innerHTML += `
@@ -185,6 +200,7 @@ function buildVariationsHtml(pokemon){
                 <div class="variations-list" id="variations-list"></div>
             </div>
         `
+
     const variationsList = document.getElementById('variations-list');
     const variacaoAtual = pokemon.variations.findIndex(p => p.number == pokemon.number)
 

@@ -1,4 +1,5 @@
 const pokeApi = {}
+const evolutionChains = []
 
 pokeApi.getPokemonDetail = (url) => {
     return fetch(url)
@@ -80,49 +81,64 @@ async function getVariacoes(pokemon, dados){
             })
     )
 
-    //#region 
-        //A mesma coisa com then
-        /* await Promise.all(variacoesPromise).then((variacoesFormatadas) => {
-            if (variacoesFormatadas != null){
-                pokemon.variations = variacoesFormatadas;   
-                pokemon.variations.map((variacao) => variacao.variations = variacoes)
-            }
-        }); */
-        //#endregion      
-
     pokemon.variations = await Promise.all(variacoesPromise);
     pokemon.variations.map((variacao) => variacao.variations = variacao)
 }
 
 
 async function getEvolucoes(pokemon, dados){
-    if (pokemon.number <= 3){
-        const evolutionChain = fetch(dados.evolution_chain.url)
-            .then((result) => result.json())
-            .then((evolutionChain) => buildEvolutionChain(pokemon, evolutionChain.chain))
+    await fetch(dados.evolution_chain.url)
+        .then((result) => result.json())
+        .then((evolutionChain) => getEvolutionChain(pokemon, evolutionChain.chain))
+}
+
+async function getEvolutionChain(pokemon, chain){
+    const evolutionChain = {
+        number: undefined,
+        pokemons: []
     }
+
+    await verifyEvolutionChain(evolutionChain, chain, i = 0);
+    pokemon.evolutionChain = evolutionChain;
 }
 
-async function buildEvolutionChain(pokemon, chain){
-    let pokemons = [];
-
-    verifyEvolvesTo(pokemons, chain);
-}
-
-async function verifyEvolvesTo(pokemons, chain){
-    fetch(chain.species.url)
+async function verifyEvolutionChain(evolutionChain, chain, i){
+    await fetch(chain.species.url.replace("-species", ""))
         .then((result) => result.json())
         .then((pokemonDados) => {
-            let pokemon = new Pokemon();
-            console.log(pokemonDados)
-            //buildPokemon(pokemon, pokemonDados);
-            pokemons.push(pokemon)
+            if (i == 0 && evolutionChains.find(e => e.number == pokemonDados.id)) 
+                getExistingEvolutionChain(evolutionChain, pokemonDados)
+            else 
+                getNewEvolutionChain(evolutionChain, pokemonDados, chain, i)                      
         })
+}
 
+async function getExistingEvolutionChain(evolutionChain, pokemonDados){
+    let existingEvolutionChain = evolutionChains.find(e => e.number == pokemonDados.id)
+    evolutionChain.number = existingEvolutionChain.number;
+    evolutionChain.pokemons = existingEvolutionChain.pokemons;
+}
+
+async function getNewEvolutionChain(evolutionChain, pokemonDados, chain, i){
+    if (i == 0){
+        evolutionChain.number = pokemonDados.id;    
+        i++;
+    }
+
+    let pokemon = new Pokemon();
+    buildPokemon(pokemon, pokemonDados);
+
+    evolutionChain.pokemons.push(pokemon)  
+    evolutionChains.push(evolutionChain)
+
+    buildEvolutionChainEvolutions(evolutionChain, pokemon, chain, i);
+}
+
+async function buildEvolutionChainEvolutions(evolutionChain, pokemon, chain, i){
     if (chain.evolves_to.length > 0){
-        chain.evolves_to.forEach((pokemonChain) => {
-            verifyEvolvesTo(pokemons, pokemonChain)
+        chain.evolves_to.forEach(async (pokemonChain) => {
+            pokemon.evolvesTo.push(pokemonChain.species.name)
+            verifyEvolutionChain(evolutionChain, pokemonChain, i);
         })
     }
-}
-    
+} 
