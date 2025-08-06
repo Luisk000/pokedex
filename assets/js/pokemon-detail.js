@@ -1,5 +1,6 @@
 let listItems = null;
 let listVariationItems = null;
+let listEvolutionItems = null;
 let selectedPokemon = null;
 
 const pokemonDetails = {}
@@ -73,6 +74,7 @@ async function getDetailHtml(id){
 }
 
 async function getVariationDetailHtml(number){
+    console.log(number)
     const url = `https://pokeapi.co/api/v2/pokemon/${number}/`
 
     const pokemon = pokeApi.getPokemonDetail(url)
@@ -178,7 +180,7 @@ async function getAbilitysDescription(abilities){
     return result;
 }
 
-function buildEvolutionsHtml(pokemon){
+async function buildEvolutionsHtml(pokemon){
     const bottom = document.getElementById('bottom');
     bottom.innerHTML += `
             <div class="card">
@@ -187,18 +189,31 @@ function buildEvolutionsHtml(pokemon){
             </div>
         `
     const firstEvolution = pokemon.evolutionChain.pokemons[0];
-    buildFirstEvolutionHtml(firstEvolution);
-    buildNextEvolutionsHtml(pokemon.evolutionChain.pokemons, firstEvolution.evolvesTo, 0)
+    await buildFirstEvolutionHtml(firstEvolution);
+    await buildNextEvolutionsHtml(pokemon.evolutionChain.pokemons, firstEvolution.evolvesTo, 0)
+
+    const evolutionsList = document.getElementById('evolutions-list')
+    listEvolutionItems = evolutionsList.querySelectorAll(":scope > div > div > div")
+    listEvolutionItems.forEach((item) => {
+        const number = item.getAttribute('number');
+        if (number != null){
+            item.addEventListener('click', () => {
+                getVariationDetailHtml(number)
+                window.scrollTo(0, 0);
+            })
+        }
+
+    })
 }
 
-function buildFirstEvolutionHtml(firstEvolution){
+async function buildFirstEvolutionHtml(firstEvolution){
     const evolutionsList = document.getElementById('evolutions-list')
     evolutionsList.innerHTML += `<div class='evolution-column' id='evolution-column'></div>`
 
     let evolutionColumn = document.getElementById(`evolution-column`)
     evolutionColumn.innerHTML += `
         <div class='evolution-line'>
-            <div class='evolution' id='pokemon${firstEvolution.number}' number='pokemon${firstEvolution.number}'>         
+            <div class='evolution' id='pokemon${firstEvolution.number}' number='${firstEvolution.number}'>         
                 <div class="evolution-img-background">
                     <img src='${firstEvolution.photo}' ref='${firstEvolution.photo}'>
                 </div>
@@ -226,7 +241,7 @@ async function buildNextEvolutionsHtml(allPokemon, evolutions, i){
             evolutionColumn.innerHTML += `
                 <div class='evolution-line'>
                     <div class="evolution-arrow">&#8594</div>
-                    <div class='evolution' id='pokemon${pokemonEvolution.number}' number='pokemon${pokemonEvolution.number}'>         
+                    <div class='evolution' id='pokemon${pokemonEvolution.number}' number='${pokemonEvolution.number}'>         
                         <div class="evolution-img-background">
                             <img src='${pokemonEvolution.photo}' ref='${pokemonEvolution.photo}'>
                         </div>
@@ -248,7 +263,6 @@ async function buildNextEvolutionsHtml(allPokemon, evolutions, i){
     let hasNextEvolutions = nextEvolutions.filter((evolutions) => evolutions != undefined && evolutions.length > 0).length > 0
     if (hasNextEvolutions){
         i++;
-        console.log(nextEvolutions)
         buildNextEvolutionsHtml(allPokemon, nextEvolutions, i)
     }
 
@@ -287,5 +301,7 @@ function buildVariationsHtml(pokemon){
             window.scrollTo(0, 0);
         })
     })
+
+    
     
 }
