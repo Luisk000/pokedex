@@ -26,6 +26,10 @@ pokemonDetails.openDetailsScreen = () => {
 }
 
 pokemonDetails.closeDetailsScreen = (pageChange = false) => {
+    const pokemonList = document.getElementById('pokemonList')
+    if (pokemonList.classList.contains('opened-pokemon-details'))
+        pokemonList.classList.remove('opened-pokemon-details')
+
     mainContent.className = "content";
 
     const screen = document.getElementById('detailScreen')
@@ -47,9 +51,12 @@ function verifyDetailsScreen(id) {
 }
 
 function preparePokemonScreen(id){
+    const pokemonList = document.getElementById('pokemonList')
+    if (!pokemonList.classList.contains('opened-pokemon-details'))
+        pokemonList.className += " opened-pokemon-details"
+
     selectedPokemon = id;
     document.getElementById('main').appendChild(section)
-    //mainContent.className = "content details-open-main";
 
     getDetailHtml(id)
 }

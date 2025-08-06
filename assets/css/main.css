@@ -19,6 +19,7 @@ body {
 
 .content{
     padding: 1rem;
+        margin: 1rem auto;
     background-color: white;
     width: 100vw;
     border-radius: 1rem;

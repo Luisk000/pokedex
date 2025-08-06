@@ -45,27 +45,7 @@
     }
 }
 
-@media screen and (min-width: 460px){
-    .variation-img-background, .evolution-img-background, .pokemon img{
-        height: 110px;
-        width: 110px;
-    }
-
-    .image-card{
-        max-width: 320px;
-    }
-
-    .pokeball-card{
-	    width: 310px;
-    }
-}
-
 @media screen and (min-width: 500px){
-    .variation-img-background, .evolution-img-background, .pokemon img{
-        height: 90px;
-        width: 90px;
-    }
-    
     .main{
         order: 1
     }
@@ -74,43 +54,8 @@
         order: 2
     }
 
-    .pokemons{
-        grid-template-columns: 1fr;
-    }
-
     .main{
         flex-direction: row;
-    }
-
-    .pokemon{
-        min-width: unset;
-        width: 120px;
-    }
-
-    .content{
-        width: fit-content;
-    }
-
-    .name{
-        align-self: center;
-    }
-
-    .detail{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .types{
-        display: flex;;
-        flex-direction: row;
-        align-self: center;
-        order: 2;
-    }  
-
-    .pokemon .detail img{
-        max-width: 100%;
-        align-self: center;
-        order: 1;
     }
 
     .abilities-list{
@@ -134,20 +79,22 @@
         min-width: 190px;
     }
 
-    .content{
-        margin: 1rem auto;
-    }
-}
+  
 
-@media screen and (min-width: 550px){
-    .variation, .evolution{
-        width: 50%;
+    .details-content{
+        width:65%;
     }
 
-
+    .stat-bar-background{
+        width: 32%
+    }  
 }
 
 @media screen and (min-width: 600px){
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
     .pokeball-card{
         width: 250px;
     }
@@ -158,17 +105,9 @@
     }
 }
 
-@media screen and (min-width: 650px){
-
-}
-
 @media screen and (min-width: 700px){
     .pokeball-card{
         width: 280px;
-    }
-
-    .pokemons{
-        grid-template-columns: 1fr 1fr;
     }
 
     .main{
@@ -184,7 +123,11 @@
     }
 }
 
-@media screen and (min-width: 790px){
+@media screen and (min-width: 800px){
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
     .image-card{
         width: 350px;
     }
@@ -203,6 +146,11 @@
 }
 
 @media screen and (min-width: 900px){
+        .pokemon img{
+            height: 100px;
+            width: 100px;
+        }
+
     .pokeball-card{
         width: 350px;
     }
@@ -233,10 +181,6 @@
         gap: 10px;
         margin-left: 10px;
         margin-right: 10px;
-    }
-
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 

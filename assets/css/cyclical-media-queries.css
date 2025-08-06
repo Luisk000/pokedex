@@ -1,0 +1,38 @@
+@media screen and ((min-width: 460px) and (max-width: 499px)) {
+    .opened-pokemon-details{
+        .pokemon img{
+            height: 100px;
+            width: 100px;
+        }
+    }
+
+    .variation-img-background, .evolution-img-background{
+        height: 100px;
+        width: 100px;
+    }
+
+    .image-card, .pokeball-card{
+        max-width: 310px;
+        width: 310px;
+    }
+
+}
+
+@media screen and (min-width: 500px){
+    .opened-pokemon-details{
+        grid-template-columns: 1fr;
+
+        .detail{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .types{
+            display: flex;;
+            flex-direction: row;
+            align-self: center;
+            order: 2;
+        }
+    }
+
+}
