@@ -156,6 +156,10 @@
     padding-right: 20px; 
 }
 
+.variations-list {
+    flex-wrap: wrap;
+}
+
 .evolutions-list{
     padding-left: 20px;
 }
@@ -168,7 +172,7 @@
 }
 
 .variation{
-    padding-left: 15px;
+    padding-left: 20px;
 }
 
 .variation img, .evolution img{
