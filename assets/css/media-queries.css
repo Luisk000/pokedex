@@ -92,6 +92,12 @@
     } 
 }
 
+@media screen and (min-width: 550px){
+    .stat-bar-background{
+        width: 42%;
+    }
+}
+
 @media screen and (min-width: 600px){
     .pokemons {
         grid-template-columns: 1fr 1fr 1fr;
@@ -243,6 +249,10 @@
         height: 120px;
         width: 120px;
     }
+
+    .stat-bar-background{
+        width: 67%;
+    }
 }
 
 @media screen and (min-width: 1380px){
@@ -254,7 +264,7 @@
     código ao main-content se a tela de detalhes estiver aberta (no 
     caso, com opened-pokemon-details, que é filho de main-content) */
     .details-content{
-        width: 300%;
+        width: 400%;
     }
 
 }
