@@ -18,20 +18,9 @@
 }
 
 @media screen and (min-width: 400px){
-    .variation-img-background, .evolution-img-background{
-        height: 110px;
-    }
 
     .variation-name, .evolution-name{
         font-size: 14px;
-    }
-
-    .pokemon{
-        min-width: 165px;
-    }
-
-    .name{
-        align-self: left;
     }
 
     .detail{
@@ -41,7 +30,6 @@
 
     .types{
         flex-direction: column;
-        align-self: left;
         order: 2;
     }  
 
@@ -52,13 +40,24 @@
     }
 }
 
-@media screen and (min-width: 420px){
-    .pokeball-card{
-		width: 220px;
-	}
-}
+@media screen and (min-width: 460px){
+    .variation-img-background, .evolution-img-background{
+        height: 110px;
+        width: 110px;
+    }
 
-@media screen and (min-width: 450px){
+    .pokemon img{
+        height: 110px;
+        width: 110px;
+    }
+
+    .image-card{
+        max-width: 320px;
+    }
+
+    .pokeball-card{
+	    width: 310px;
+    }
 }
 
 @media screen and (min-width: 500px){
