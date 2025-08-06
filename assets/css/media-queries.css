@@ -15,6 +15,11 @@
         font-size: 16px;
     }
 
+    .hidden{
+        font-size: 12px;
+        margin-right: 4px;
+    }
+
 }
 
 @media screen and (min-width: 400px){
@@ -41,12 +46,7 @@
 }
 
 @media screen and (min-width: 460px){
-    .variation-img-background, .evolution-img-background{
-        height: 110px;
-        width: 110px;
-    }
-
-    .pokemon img{
+    .variation-img-background, .evolution-img-background, .pokemon img{
         height: 110px;
         width: 110px;
     }
@@ -61,6 +61,11 @@
 }
 
 @media screen and (min-width: 500px){
+    .variation-img-background, .evolution-img-background, .pokemon img{
+        height: 90px;
+        width: 90px;
+    }
+    
     .main{
         order: 1
     }
