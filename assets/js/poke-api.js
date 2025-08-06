@@ -10,7 +10,7 @@ pokeApi.getPokemonDetail = (url) => {
 pokeApi.getPokemons = (offset = 0, limit = 20) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
     return fetch(url)
-        .then((response) => response.json()) // isso é um retorno, e após isso, a segeunda linha é executada
+        .then((response) => response.json())
         .then((jsonBody) => jsonBody.results)
         .then((pokemons) => pokemons.map(
             (pokemon) => pokeApi.getPokemonDetail(pokemon.url))
@@ -34,6 +34,16 @@ function buildPokemon(pokemon, pokeDetail){
     pokemon.type = pokemon.types[0];
     pokemon.stats = converterStats(pokeDetail);
     pokemon.abilities = converterAbilities(pokeDetail);
+    pokemon.height = converterNumero(pokeDetail.height) + "m";
+    pokemon.weight = converterNumero(pokeDetail.weight) + "kg";
+}
+
+function converterNumero(number) {
+    number = number.toString()
+    if (number.length == 1)
+        return "0." + number
+    else
+        return number.replace(number[number.length - 1], "." + number[number.length - 1]);
 }
 
 function converterStats(pokeDetail){

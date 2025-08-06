@@ -74,7 +74,6 @@ async function getDetailHtml(id){
 }
 
 async function getVariationDetailHtml(number){
-    console.log(number)
     const url = `https://pokeapi.co/api/v2/pokemon/${number}/`
 
     const pokemon = pokeApi.getPokemonDetail(url)
