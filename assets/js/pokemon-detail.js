@@ -110,8 +110,6 @@ function buildDetailHtml(pokemon, html) {
 
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
-    
-    console.log(pokemon.evolutionChain)
 
     if (pokemon.evolutionChain.pokemons.length > 1)
         buildEvolutionsHtml(pokemon)
@@ -188,26 +186,73 @@ function buildEvolutionsHtml(pokemon){
                 <div class="evolutions-list" id="evolutions-list"></div>
             </div>
         `
+    const firstEvolution = pokemon.evolutionChain.pokemons[0];
+    buildFirstEvolutionHtml(firstEvolution);
+    buildNextEvolutionsHtml(pokemon.evolutionChain.pokemons, firstEvolution.evolvesTo, 0)
+}
+
+function buildFirstEvolutionHtml(firstEvolution){
     const evolutionsList = document.getElementById('evolutions-list')
+    evolutionsList.innerHTML += `<div class='evolution-column' id='evolution-column'></div>`
 
-    pokemon.evolutionChain.pokemons.forEach((pokemonEvolution) => {
-        evolutionsList.innerHTML += `
-            <div class="evolution-arrow" id="evolution-arrow-${pokemonEvolution.number}"></div>
-            <div class='evolution' id='pokemon${pokemonEvolution.number}' number='pokemon${pokemonEvolution.number}'>         
+    let evolutionColumn = document.getElementById(`evolution-column`)
+    evolutionColumn.innerHTML += `
+        <div class='evolution-line'>
+            <div class='evolution' id='pokemon${firstEvolution.number}' number='pokemon${firstEvolution.number}'>         
                 <div class="evolution-img-background">
-                    <img src='${pokemonEvolution.photo}' ref='${pokemonEvolution.photo}'>
+                    <img src='${firstEvolution.photo}' ref='${firstEvolution.photo}'>
                 </div>
-                <p class='evolution-name'>${pokemonEvolution.name}</p>           
+                <p class='evolution-name'>${firstEvolution.name}</p>           
             </div>
-        `
+        </div>
+    `
+}
+
+async function buildNextEvolutionsHtml(allPokemon, evolutions, i){
+    const evolutionsList = document.getElementById('evolutions-list')
+    evolutionsList.innerHTML += `<div class='evolution-column' id='evolution-column-${i}'></div>`
+    const evolutionColumn = document.getElementById(`evolution-column-${i}`)
+
+    let pokemonEvolutions = [];
+    evolutions.forEach((pokemonName) => {
+        let pokemonEvolution = allPokemon.find(p => p.name == pokemonName)
+        pokemonEvolutions.push(pokemonEvolution)
     })
 
-    pokemon.evolutionChain.pokemons.forEach((pokemonEvolution, index) => {
-        if (index > 0){
-            const arrow = document.getElementById(`evolution-arrow-${pokemonEvolution.number}`)
-            arrow.innerHTML = "&#8594"
-        }     
+    pokemonEvolutions.forEach((pokemonEvolution) => {
+        if (pokemonEvolution == undefined)
+            evolutionColumn.innerHTML += `<div class='evolution-line'></div>`
+        else {
+            evolutionColumn.innerHTML += `
+                <div class='evolution-line'>
+                    <div class="evolution-arrow">&#8594</div>
+                    <div class='evolution' id='pokemon${pokemonEvolution.number}' number='pokemon${pokemonEvolution.number}'>         
+                        <div class="evolution-img-background">
+                            <img src='${pokemonEvolution.photo}' ref='${pokemonEvolution.photo}'>
+                        </div>
+                        <p class='evolution-name'>${pokemonEvolution.name}</p>           
+                    </div>
+                </div>
+            `;
+        }
+        
     })
+
+    let nextEvolutions = pokemonEvolutions.map((pokemonEvolution) => {
+        if (pokemonEvolution != undefined)
+            return pokemonEvolution.evolvesTo
+        else 
+            return undefined
+    })
+
+    let hasNextEvolutions = nextEvolutions.filter((evolutions) => evolutions != undefined && evolutions.length > 0).length > 0
+    if (hasNextEvolutions){
+        i++;
+        console.log(nextEvolutions)
+        buildNextEvolutionsHtml(allPokemon, nextEvolutions, i)
+    }
+
+    
 }
 
 function buildVariationsHtml(pokemon){

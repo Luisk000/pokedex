@@ -250,6 +250,10 @@
         width: 120px;
     }
 
+    .evolution-line{
+        height: 165px;
+    }
+
     .stat-bar-background{
         width: 67%;
     }

@@ -156,6 +156,10 @@
     padding-right: 20px; 
 }
 
+.evolutions-list{
+    padding-left: 20px;
+}
+
 .variation, .evolution{
     display: flex;
     flex-direction: column;
@@ -180,6 +184,10 @@
     width: 100px;
 }
 
+.evolution-line{
+    height: 145px;
+}
+
 .variation img:hover, .evolution img:hover{
     transform: scale(1.1);
 }
@@ -195,4 +203,15 @@
     font-size: 30px;
     margin-top: -32px;
     padding: 10px;
+}
+
+.evolution-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.evolution-line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
