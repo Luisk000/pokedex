@@ -34,7 +34,7 @@
     }
 
     .types{
-        flex-direction: column;
+        flex-direction: column;       
         order: 2;
     }  
 
