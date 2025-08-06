@@ -30,7 +30,7 @@ pokemonDetails.closeDetailsScreen = (pageChange = false) => {
     if (pokemonList.classList.contains('opened-pokemon-details'))
         pokemonList.classList.remove('opened-pokemon-details')
 
-    mainContent.className = "content";
+    mainContent.className = "content main-content";
 
     const screen = document.getElementById('detailScreen')
     if (screen != undefined)

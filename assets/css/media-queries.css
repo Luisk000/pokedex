@@ -77,9 +77,11 @@
     .ability-info-box{
         margin-top: 27px;
         min-width: 190px;
-    }
+    } 
 
-  
+    .opened-pokemon-details{
+        grid-template-columns: 1fr;
+    }
 
     .details-content{
         width:65%;
@@ -87,7 +89,7 @@
 
     .stat-bar-background{
         width: 32%
-    }  
+    } 
 }
 
 @media screen and (min-width: 600px){
@@ -95,8 +97,8 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .pokeball-card{
-        width: 250px;
+    .opened-pokemon-details{
+        grid-template-columns: 1fr;
     }
 
     .abilities-list{
@@ -105,11 +107,17 @@
     }
 }
 
-@media screen and (min-width: 700px){
-    .pokeball-card{
-        width: 280px;
+@media screen and (min-width: 650px){
+    .opened-pokemon-details{
+        grid-template-columns: 1fr 1fr;
     }
 
+    .details-content{
+        width: 53%;
+    }
+}
+
+@media screen and (min-width: 700px){
     .main{
         gap: 5px;
         margin-left: 5px;
@@ -117,75 +125,136 @@
     }
 }
 
-@media screen and (min-width: 760px){
-    .pokeball-card{
-        width: 300px;
-    }
-}
-
 @media screen and (min-width: 800px){
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
     .image-card{
         width: 350px;
-    }
-
-    .variation, .evolution{
-        width: 175px;
-    }
-
-    .variation-img-background, .evolution-img-background{
-        height: 150px;
     }
 
     .variation-name, .evolution-name{
         font-size: 15px;
     }
+
+    .main-content{
+        max-width: 90%;
+    }
 }
 
-@media screen and (min-width: 900px){
-        .pokemon img{
-            height: 100px;
-            width: 100px;
-        }
+@media screen and (min-width: 850px){
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 
-    .pokeball-card{
-        width: 350px;
+    .opened-pokemon-details{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 915px){
+    .details-content{
+        width: 50%;
     }
 
     .stat-bar-background{
         width: 56%;
     }
 
-    .variation, .evolution {
-        width: 199px;
-    }
-
-    .variation-img-background, .evolution-img-background{
-        height: 170px;
-    }
-
      .variation-name, .evolution-name{
         font-size: 16px;
     }
-}
-
-@media screen and (min-width: 1050px){
-    .content{
-        max-width: 1050px;
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
+    .opened-pokemon-details {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .opened-pokemon-details {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .main-content{
+        max-width: 85%;
+    }
+}
+
+@media screen and (min-width: 1090px){
     .main{
         gap: 10px;
         margin-left: 10px;
         margin-right: 10px;
     }
+
+    .main-content{
+        max-width: 80%;
+    }
+
+    .details-content{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .opened-pokemon-details{
+        .pokemon{
+            width: 200px;
+        }
+
+        .main-content{
+            max-width: fit-content;
+        }
+    }
+}
+
+@media screen and (min-width: 1250px){
+    .image-card, .pokeball-card{
+        max-width: 380px;
+        width: 380px;
+    }
+
+    .opened-pokemon-details{
+        .pokemon img{
+            height: 100px;
+            width: 100px;
+        }
+    }
+
+    .variation-img-background, .evolution-img-background{
+        height: 100px;
+        width: 100px;
+    }
 }
 
 @media screen and (min-width: 1300px){
-    .stat-bar-background{
-        width: 68%;
+    .opened-pokemon-details{
+        .pokemon img{
+            height: 110px;
+            width: 110px;
+        }
+
+        .pokemon{
+            width: 200px;
+        }
     }
+
+    .pokemon img, .variation-img-background, .evolution-img-background{
+        height: 120px;
+        width: 120px;
+    }
+}
+
+@media screen and (min-width: 1380px){
+    .opened-pokemon-details{
+        max-width: fit-content;
+    }
+
+    /* Isso não é o essencial, o problema é que não há como aplicar 
+    código ao main-content se a tela de detalhes estiver aberta (no 
+    caso, com opened-pokemon-details, que é filho de main-content) */
+    .details-content{
+        width: 300%;
+    }
+
 }
