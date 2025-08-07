@@ -76,6 +76,8 @@ async function buildDadosComplexos(pokemon, pokeDetail){
     return fetch(pokeDetail.species.url)
         .then((response) => response.json())
         .then(async (dados) => {
+            pokemon.category = dados.genera.find(p => p.language.name == "en").genus
+
             const variacoes = 
                 dados.varieties.length == 1 ? "" :
                 getVariacoes(pokemon, dados)
