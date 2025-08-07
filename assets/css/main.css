@@ -1,5 +1,5 @@
 * {
-    font-family: 'Roboto', 'sans-serif';
+    font-family: 'Montserrat', 'Roboto', 'sans-serif';
     box-sizing: border-box;
     max-width: 100%;
 }
@@ -10,6 +10,10 @@ html, body {
 
 body {
     background-color: #E6E6E6;
+}
+
+.title{
+    color: #5E5E5E;
 }
 
 .main{
@@ -24,6 +28,7 @@ body {
     width: 100vw;
     border-radius: 1rem;
     order: 2;
+
 }
 
 .content h1 {
@@ -36,7 +41,7 @@ body {
     grid-template-columns: 1fr 1fr;
     padding: 0;
     margin: 0;
-
+    
 }
 
 .pokemon {
@@ -60,8 +65,7 @@ body {
 }
 
 .pokemon .number{
-    color: black;
-    opacity: .4;
+    opacity: .7;
     text-align: right;
     font-size: .625rem;
 }

@@ -121,6 +121,10 @@
     .details-content{
         width: 53%;
     }
+
+    .evolutions-list{
+        max-width: 40vw
+    }
 }
 
 @media screen and (min-width: 700px){
@@ -202,6 +206,12 @@
     }
 }
 
+@media screen and (min-width: 1020px){
+       .evolutions-list{
+        max-width: 38vw
+    }
+}
+
 @media screen and (min-width: 1200px){
     .opened-pokemon-details{
         .pokemon{
@@ -257,11 +267,23 @@
     .stat-bar-background{
         width: 67%;
     }
+
+    .info-card{
+        justify-content: center;
+    }
 }
 
 @media screen and (min-width: 1380px){
     .opened-pokemon-details{
         max-width: fit-content;
+    }
+
+    .info-value{
+        margin-right: 1vw;
+    }
+
+    .info-name{
+        margin-left: 1vw;
     }
 
     /* Isso não é o essencial, o problema é que não há como aplicar 

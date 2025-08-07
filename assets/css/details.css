@@ -29,6 +29,7 @@
 
 .pokemon-title{
 	text-align: center;
+    color: rgb(40, 40, 40);
 }
 
 .card{
@@ -85,7 +86,7 @@
 }
 
 .stats-total{
-    font-weight: bold;
+    font-weight: 620;
 }
 
 .invisible-bar{
@@ -162,6 +163,7 @@
 
 .evolutions-list{
     padding-left: 20px;
+    max-width:50vw
 }
 
 .variation, .evolution{
@@ -218,4 +220,30 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.info-card{
+    padding: 25px 25px 15px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.info-row{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
+
+.info-name{
+    font-weight: 550;
+    font-size: 16px;
+    min-width: 100px;
+    width: 100px;
+}
+
+.info-value{
+    font-size: 15px;
+    width: 145px;
+    margin-bottom: 2px;
 }

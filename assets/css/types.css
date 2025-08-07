@@ -35,12 +35,12 @@
 
 .fire{
     background-color: rgb(255 156 85);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .fairy{
     background-color: rgb(235 143 229);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .water{
@@ -50,7 +50,7 @@
 
 .flying{
     background-color: rgb(144 169 222);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .normal{
@@ -60,32 +60,32 @@
 
 .rock{
     background-color: rgb(197 184 138);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .electric{
     background-color: rgb(243 210 59);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .bug{
     background-color: rgb(144 194 45);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .grass{
     background-color: rgb(99 188 92);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .ice{
     background-color: rgb(118 206 192);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .steel{
     background-color: rgb(91 144 163);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 /* .fighting-light{
@@ -125,12 +125,12 @@
 
 .fire-light{
     background-color: rgba(255, 156, 85, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .fairy-light{
     background-color: rgba(235, 143, 229, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .water-light{
@@ -140,7 +140,7 @@
 
 .flying-light{
     background-color: rgba(144, 169, 222, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .normal-light{
@@ -150,32 +150,32 @@
 
 .rock-light{
     background-color: rgba(197, 184, 138, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .electric-light{
     background-color: rgba(243, 210, 59, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .bug-light{
     background-color: rgba(144, 194, 45, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .grass-light{
     background-color: rgba(99, 188, 92, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .ice-light{
     background-color: rgba(118, 206, 192, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 .steel-light{
     background-color: rgba(91, 144, 163, 0.6);
-    color: black;
+    color: rgb(40, 40, 40);
 } */
 
 .fighting-background{

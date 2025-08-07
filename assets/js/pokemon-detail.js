@@ -74,6 +74,7 @@ async function getDetailHtml(id){
 }
 
 async function getVariationDetailHtml(number){
+    console.log(number)
     const url = `https://pokeapi.co/api/v2/pokemon/${number}/`
 
     const pokemon = pokeApi.getPokemonDetail(url)
@@ -109,6 +110,7 @@ function buildDetailHtml(pokemon, html) {
     const pokemonTitle = document.getElementById('pokemon-title');
     pokemonTitle.innerHTML = pokemon.name;
 
+    buildInfoHtml(pokemon)
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
 
@@ -116,6 +118,30 @@ function buildDetailHtml(pokemon, html) {
         buildEvolutionsHtml(pokemon)
     if (pokemon.variations.length > 1)
         buildVariationsHtml(pokemon)
+}
+
+function buildInfoHtml(pokemon){
+    const infoCard = document.getElementById("info-card")
+    infoCard.innerHTML += `
+        <div class='info-card'>
+            <div class='info-row'>
+                <div class='info-name'>HEIGHT</div>
+                <div class='info-value'>${pokemon.height}</div> 
+            </div>
+            <div class='info-row'>
+                <div class='info-name'>WEIGHT</div>
+                <div class='info-value'>${pokemon.weight}</div>     
+            </div>
+            <div class='info-row'>
+                <div class='info-name'>CATEGORY</div>
+                <div class='info-value'></div>
+            </div>
+            <div class='info-row'>
+                <div class='info-name'>GENDER</div>
+                <div class='info-value'></div>
+            </div>
+        </div>
+    `
 }
 
 function buildStatsHtml(pokemon){

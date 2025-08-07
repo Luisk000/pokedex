@@ -34,16 +34,22 @@ function buildPokemon(pokemon, pokeDetail){
     pokemon.type = pokemon.types[0];
     pokemon.stats = converterStats(pokeDetail);
     pokemon.abilities = converterAbilities(pokeDetail);
-    pokemon.height = converterNumero(pokeDetail.height) + "m";
-    pokemon.weight = converterNumero(pokeDetail.weight) + "kg";
+    pokemon.height = converterNumero(pokeDetail.height, pokemon) + "m";
+    pokemon.weight = converterNumero(pokeDetail.weight, pokemon) + "kg";
 }
 
-function converterNumero(number) {
+function converterNumero(number, pokemon) {
     number = number.toString()
+    if (pokemon.number == 3){
+    }
     if (number.length == 1)
         return "0." + number
     else
-        return number.replace(number[number.length - 1], "." + number[number.length - 1]);
+    {
+        let lastChar = number.substr(number.length - 1);
+        number = number.slice(0, -1);
+        return number + "." + lastChar;
+    }
 }
 
 function converterStats(pokeDetail){
