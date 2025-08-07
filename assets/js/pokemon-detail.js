@@ -138,7 +138,7 @@ function buildInfoHtml(pokemon){
             </div>
             <div class='info-row'>
                 <div class='info-name'>GENDER</div>
-                <div class='info-value'></div>
+                <div class='info-value'>${pokemon.genders}</div>
             </div>
         </div>
     `
