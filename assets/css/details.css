@@ -226,7 +226,7 @@
     padding: 25px 25px 15px 25px;
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 16px;
 }
 
 .info-row{
@@ -240,10 +240,34 @@
     font-size: 16px;
     min-width: 100px;
     width: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .info-value{
     font-size: 15px;
     width: 145px;
-    margin-bottom: 2px;
+}
+
+.detail-types-card{
+    padding: 0px 25px;
+    padding-top: 25px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    align-self: center;
+}
+
+.detail-types{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.detail-types .type{
+    font-size: 14px;
+    padding: .25rem .7rem .4rem .7rem;
+    border-radius: 1rem;
 }

@@ -123,6 +123,10 @@ function buildDetailHtml(pokemon, html) {
 function buildInfoHtml(pokemon){
     const infoCard = document.getElementById("info-card")
     infoCard.innerHTML += `
+        <div class="detail-types-card">  
+            <div class='info-name'>TYPES</div> 
+            <div class="detail-types" id="types"></div>           
+        </div>
         <div class='info-card'>
             <div class='info-row'>
                 <div class='info-name'>HEIGHT</div>
@@ -142,6 +146,11 @@ function buildInfoHtml(pokemon){
             </div>
         </div>
     `
+
+    const typesHtml = document.getElementById("types")
+    pokemon.types.forEach((type) => {
+        typesHtml.innerHTML += `<div class="type ${type}">${type}</div>`
+    })
 }
 
 function buildStatsHtml(pokemon){

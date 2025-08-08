@@ -20,6 +20,11 @@
         margin-right: 4px;
     }
 
+    .detail-types .type{
+        font-size: 16px;
+        padding: .25rem .8rem .4rem .8rem;
+    }
+
 }
 
 @media screen and (min-width: 400px){
@@ -268,9 +273,6 @@
         width: 67%;
     }
 
-    .info-card{
-        justify-content: center;
-    }
 }
 
 @media screen and (min-width: 1380px){
@@ -279,11 +281,11 @@
     }
 
     .info-value{
-        margin-right: 1vw;
+        margin-right: 1.4vw;
     }
 
     .info-name{
-        margin-left: 1vw;
+        margin-left: 1.4vw;
     }
 
     /* Isso não é o essencial, o problema é que não há como aplicar 
@@ -292,5 +294,4 @@
     .details-content{
         width: 400%;
     }
-
 }

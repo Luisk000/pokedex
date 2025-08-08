@@ -203,7 +203,6 @@ async function getPokemonGenders(pokemon){
     if (pokemonFeminino)
         genders.push("&female;")
 
-    console.log(pokemonSemGenero)
     if (pokemonSemGenero)
         genders.push("Genderless")
 
