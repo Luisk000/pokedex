@@ -2,6 +2,7 @@ class Pokemon {
     number;
     name;
     photo;
+    shiny;
     type;
     evolutionChain;
     evolvesTo = new Array();

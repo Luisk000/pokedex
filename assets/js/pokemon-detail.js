@@ -335,7 +335,9 @@ function buildVariationsHtml(pokemon){
             window.scrollTo(0, 0);
         })
     })
+}
 
-    
-    
+function switchToShinyButton(){
+    const defaultButton = document.getElementById("");
+    const shinyButton = document.getElementById("");
 }
