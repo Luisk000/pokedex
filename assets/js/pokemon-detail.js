@@ -164,8 +164,27 @@ function buildInfoHtml(pokemon){
 }
 
 function buildEntryHtml(pokemon){
-    const entryCard = document.getElementById('entry-card')
-    entryCard.innerHTML = `<p class='pokemon-entry'>${pokemon.entry}</p>`
+    esperarCarregar('#select-version', (element) => {
+        pokemon.gameVersions.forEach((entry) => {
+            if (entry.version.name == pokemon.activeGameVersion)
+                element.innerHTML += `<option selected>${entry.version.name}</option>`
+            else
+                element.innerHTML += `<option>${entry.version.name}</option>`
+        })
+        buildEntryDescriptionHtml(element, pokemon)
+    })
+
+}
+
+function buildEntryDescriptionHtml(select, pokemon){
+    esperarCarregar('#pokemon-entry', (entry) => {
+        entry.innerHTML = pokemon.entry
+        select.addEventListener('change', function(event) {
+            const flavor_text_entry = event.target.value;
+            pokemon.entry = pokemon.gameVersions.find(e => e.version.name == flavor_text_entry).flavor_text
+            entry.innerHTML = pokemon.entry
+        })
+    })
 }
 
 function buildStatsHtml(pokemon){

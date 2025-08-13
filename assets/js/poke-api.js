@@ -102,10 +102,9 @@ async function buildDadosComplexos(pokemon, pokeDetail){
 function buildEntry(pokemon, dados){
     const englishEntries = dados.flavor_text_entries.filter(t => t.language.name == 'en');
     const lastEntry = englishEntries[englishEntries.length - 1];
-    pokemon.entry = lastEntry.flavor_text
-
-    const versions = englishEntries.map(e => e.version.name)
-    const mostRecentVersion = lastEntry.version.name
+    pokemon.entry = lastEntry.flavor_text;
+    pokemon.activeGameVersion = lastEntry.version.name;
+    pokemon.gameVersions = englishEntries
 }
 
 async function getVariacoes(pokemon, dados){ 

@@ -306,8 +306,26 @@
 }
 
 .pokemon-entry{
-    padding: 20px;
-    padding-bottom: 0px;
+    padding: 0px 20px;;
     font-size: 15px;
     line-height: 1.5;
+}
+
+.select-version{
+    border-radius: 20px;
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: capitalize;
+    border: 5px solid white;
+}
+
+.select-version:hover{
+    filter: invert(1) opacity(0.8);
+
+}
+
+.select-version *{
+    font-size: 13px;
+    text-transform: capitalize;
 }

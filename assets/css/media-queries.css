@@ -7,8 +7,14 @@
         width: 110px;
     }
 
-    .ability, .pokemon-entry, .stat-name, .stat-value, .detail-types .type{
+    .ability, .pokemon-entry, .stat-name, .stat-value, .detail-types .type, .select-version *{
         font-size: 16px;
+    }
+
+    .select-version{
+        font-size: 18px;
+        margin-left: 15px;
+        border: 7px solid white
     }
 
     .hidden{

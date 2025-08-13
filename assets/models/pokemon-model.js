@@ -6,6 +6,8 @@ class Pokemon {
     activeImage;
     type;
     evolutionChain;
+    activeGameVersion;
+    gameVersions = new Array();
     evolvesTo = new Array();
     types = new Array();
     stats = new Array(6);
