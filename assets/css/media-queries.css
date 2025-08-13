@@ -95,6 +95,10 @@
     .stat-bar-background{
         width: 32%
     } 
+
+    .evolutions-list{
+        max-width: 50vw;
+    }
 }
 
 @media screen and (min-width: 550px){
