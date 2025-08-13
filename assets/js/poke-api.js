@@ -3,6 +3,7 @@ const evolutionChains = []
 let pokemonsMasculinos = []
 let pokemonsFemininos = []
 let pokemonsSemGenero = []
+let gotGenders = false;
 
 pokeApi.getPokemonDetail = (url) => {
     return fetch(url)
@@ -10,7 +11,8 @@ pokeApi.getPokemonDetail = (url) => {
         .then((pokeDetail) => convertPokeApiDetailToPokemon(pokeDetail))
 }
 
-pokeApi.getPokemons = (offset = 0, limit = 20) => {
+pokeApi.getPokemons = async (offset = 0, limit = 20) => {
+    await getGenders();
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
     return fetch(url)
         .then((response) => response.json())
@@ -185,9 +187,6 @@ async function getGenders(){
 }
 
 async function getPokemonGenders(pokemon){
-    if (pokemonsFemininos.length == 0)
-        await getGenders();
-
     let pokemonFeminino = pokemonsFemininos.pokemon_species_details
         .find(p => p.pokemon_species.name == pokemon.name)
 

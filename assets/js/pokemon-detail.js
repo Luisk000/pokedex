@@ -114,14 +114,19 @@ function buildDetailHtml(pokemon, html) {
 }
 
 function buildPokemonImage(pokemon){
-    // Imagem do Pokémon
-    const pokemonImage = document.createElement('img')
-    pokemonImage.src = pokemon.activeImage;
-    pokemonImage.className = 'pokemon-image';
+    const img = new Image();
+    img.src = pokemon.activeImage;
 
-    // Adiciona a imagem do Pokémon ao card
-    const imageCard = document.getElementById('image-card');
-    imageCard.appendChild(pokemonImage)
+    const pokemonImage = document.createElement('img')
+    pokemonImage.className = 'pokemon-image';
+    pokemonImage.src = img.src;
+
+    img.onload = function(){
+        const imageCard = document.getElementById('image-card');
+        imageCard.innerHTML = '';
+        imageCard.appendChild(pokemonImage)
+    }
+
 }
 
 function buildInfoHtml(pokemon){
@@ -354,7 +359,7 @@ function switchToShinyButton(pokemon){
                 pokemon.activeImage = pokemon.photo;
                 shinyButton.classList.remove('selected')
                 defaultButton.classList.add('selected')
-                rebuildImage(pokemon);
+                buildPokemonImage(pokemon);
             }
         })
 
@@ -363,14 +368,8 @@ function switchToShinyButton(pokemon){
                 pokemon.activeImage = pokemon.shiny;
                 defaultButton.classList.remove('selected')
                 shinyButton.classList.add('selected')
-                rebuildImage(pokemon);
+                buildPokemonImage(pokemon);
             }
         })
     },1000)
-}
-
-function rebuildImage(pokemon){
-    const imageCard = document.getElementById('image-card');
-    imageCard.innerHTML = '';
-    buildPokemonImage(pokemon)
 }
