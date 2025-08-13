@@ -102,7 +102,7 @@ function buildDetailHtml(pokemon, html) {
     pokemonTitle.innerHTML = pokemon.name;
 
     buildPokemonImage(pokemon)
-    switchToShinyButton(pokemon)
+    buildShinyButton(pokemon)
     buildInfoHtml(pokemon)
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
@@ -346,30 +346,51 @@ function buildVariationsHtml(pokemon){
     })
 }
 
-function switchToShinyButton(pokemon){
-    let defaultButton;
-    let shinyButton;
+function buildShinyButton(pokemon){
+    const shinySelection = document.getElementById("select-shiny")
+    shinySelection.innerHTML = `
+        <div class="select-option selected" id="default-option">Default</div>
+        <div class="select-option" id="shiny-option">Shiny</div>
+    `
 
-    setTimeout(() => {
-        defaultButton = document.getElementById("default-option");
-        shinyButton = document.getElementById("shiny-option");
-
-        defaultButton.addEventListener('click', () => {
-            if (!defaultButton.classList.contains('selected')){
+    esperarCarregar('#default-option', (element) => {
+        element.addEventListener('click', () => {
+            if (!element.classList.contains('selected')){
                 pokemon.activeImage = pokemon.photo;
-                shinyButton.classList.remove('selected')
-                defaultButton.classList.add('selected')
+                changeSelected(element, "shiny-option")
                 buildPokemonImage(pokemon);
             }
         })
+    })
 
-        shinyButton.addEventListener('click', () => {
-            if (!shinyButton.classList.contains('selected')){
+    esperarCarregar('#shiny-option', (element) => { 
+        element.addEventListener('click', () => {
+            if (!element.classList.contains('selected')){
                 pokemon.activeImage = pokemon.shiny;
-                defaultButton.classList.remove('selected')
-                shinyButton.classList.add('selected')
+                changeSelected(element, "default-option")
                 buildPokemonImage(pokemon);
             }
         })
-    },1000)
+    })  
+}
+
+function esperarCarregar(selector, callback) {
+    const observer = new MutationObserver((mutations, observer) => {
+        const element = document.querySelector(selector)
+        if (element) {
+            observer.disconnect()
+            callback(element)
+        }
+    })
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    })
+}
+
+function changeSelected(element, otherOption){
+    const otherButton = document.getElementById(otherOption);
+    otherButton.classList.remove('selected')
+    element.classList.add('selected')
 }
