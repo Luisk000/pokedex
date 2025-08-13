@@ -83,6 +83,8 @@ async function buildDadosComplexos(pokemon, pokeDetail){
     return fetch(pokeDetail.species.url)
         .then((response) => response.json())
         .then(async (dados) => {
+            buildEntry(pokemon, dados)
+
             pokemon.category = dados.genera.find(p => p.language.name == "en").genus
 
             const genders = getPokemonGenders(pokemon)
@@ -95,6 +97,15 @@ async function buildDadosComplexos(pokemon, pokeDetail){
 
             await Promise.all([genders, variacoes, evolucoes])
         })
+}
+
+function buildEntry(pokemon, dados){
+    const englishEntries = dados.flavor_text_entries.filter(t => t.language.name == 'en');
+    const lastEntry = englishEntries[englishEntries.length - 1];
+    pokemon.entry = lastEntry.flavor_text
+
+    const versions = englishEntries.map(e => e.version.name)
+    const mostRecentVersion = lastEntry.version.name
 }
 
 async function getVariacoes(pokemon, dados){ 

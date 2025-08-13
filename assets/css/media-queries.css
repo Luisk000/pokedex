@@ -7,11 +7,7 @@
         width: 110px;
     }
 
-    .stat-name, .stat-value{
-        font-size: 16px;
-    }
-
-    .ability{
+    .ability, .pokemon-entry, .stat-name, .stat-value, .detail-types .type{
         font-size: 16px;
     }
 
@@ -21,7 +17,6 @@
     }
 
     .detail-types .type{
-        font-size: 16px;
         padding: .25rem .8rem .35rem .8rem;
     }
 

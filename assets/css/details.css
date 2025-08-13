@@ -304,3 +304,10 @@
 .select-shiny .selected{
     background-color: #8E8E8E;
 }
+
+.pokemon-entry{
+    padding: 20px;
+    padding-bottom: 0px;
+    font-size: 15px;
+    line-height: 1.5;
+}

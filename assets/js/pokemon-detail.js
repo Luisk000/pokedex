@@ -104,6 +104,7 @@ function buildDetailHtml(pokemon, html) {
     buildPokemonImage(pokemon)
     buildShinyButton(pokemon)
     buildInfoHtml(pokemon)
+    buildEntryHtml(pokemon)
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
 
@@ -160,6 +161,11 @@ function buildInfoHtml(pokemon){
     pokemon.types.forEach((type) => {
         typesHtml.innerHTML += `<div class="type ${type}">${type}</div>`
     })
+}
+
+function buildEntryHtml(pokemon){
+    const entryCard = document.getElementById('entry-card')
+    entryCard.innerHTML = `<p class='pokemon-entry'>${pokemon.entry}</p>`
 }
 
 function buildStatsHtml(pokemon){
@@ -245,7 +251,6 @@ async function buildEvolutionsHtml(pokemon){
                 window.scrollTo(0, 0);
             })
         }
-
     })
 }
 
@@ -292,8 +297,7 @@ async function buildNextEvolutionsHtml(allPokemon, evolutions, i){
                     </div>
                 </div>
             `;
-        }
-        
+        }  
     })
 
     let nextEvolutions = pokemonEvolutions.map((pokemonEvolution) => {
@@ -308,8 +312,6 @@ async function buildNextEvolutionsHtml(allPokemon, evolutions, i){
         i++;
         buildNextEvolutionsHtml(allPokemon, nextEvolutions, i)
     }
-
-    
 }
 
 function buildVariationsHtml(pokemon){
