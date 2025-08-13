@@ -1,5 +1,7 @@
 const variation = {}
 
+let listVariationItems = null;
+
 variation.getVariacoes = async (pokemon, dados) => { 
     const variacoesPromise = dados.varieties.map((variacao) => 
         fetch(variacao.pokemon.url)
@@ -55,5 +57,5 @@ async function getDetailHtmlByNumber(number){
     const pokemon = pokeApi.getPokemonDetail(url)
         .then((pokemonDetail) => pokemonDetail)
 
-    getDetailHtml(pokemon)
+    pokemonDetails.getDetailHtml(pokemon)
 }

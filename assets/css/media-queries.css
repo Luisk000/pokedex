@@ -98,7 +98,7 @@
     } 
 
     .evolutions-list{
-        width: 40vw;
+        min-width: 40vw;
     }
 }
 
@@ -214,7 +214,8 @@
 
 @media screen and (min-width: 1020px){
     .evolutions-list{
-        width: 38vw
+        min-width: 38vw;
+        width: 38vw;
     }
 }
 
@@ -274,6 +275,9 @@
         width: 67%;
     }
 
+    .evolutions-list{
+        min-width: 40vw;
+    }
 }
 
 @media screen and (min-width: 1380px){

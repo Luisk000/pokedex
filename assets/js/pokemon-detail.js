@@ -4,7 +4,6 @@ const mainContent = document.getElementById('main-content')
 const section = document.createElement('section');
 
 let listItems = null;
-let listVariationItems = null;
 let selectedPokemon = null;
 
 pokeballBackground.src = "images/pokeball.png"
@@ -40,6 +39,29 @@ pokemonDetails.closeDetailsScreen = (pageChange = false) => {
         selectedPokemon = null;
 }
 
+pokemonDetails.getDetailHtml = async (pokemon) => {
+    const html =  fetch('detail.html')
+        .then(response => response.text())
+
+    await Promise.all([pokemon, html])
+        .then(([pokemon, html]) => buildDetailHtml(pokemon, html))
+}
+
+function esperarCarregar(selector, callback) {
+    const observer = new MutationObserver((mutations, observer) => {
+        const element = document.querySelector(selector)
+        if (element) {
+            observer.disconnect()
+            callback(element)
+        }
+    })
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    })
+}
+
 function verifyDetailsScreen(id) {
     if (selectedPokemon != null)
         pokemonDetails.closeDetailsScreen()
@@ -62,20 +84,10 @@ function preparePokemonScreen(id){
 }
 
 function buildDetailHtml(pokemon, html) {
-    // Card
-    const detailScreen = document.getElementById('detailScreen');
-    detailScreen.innerHTML = html;
-    detailScreen.className = `content details-content ${pokemon.type}-background`;
-
-    // Imagem de pokebola
-    const pokeballCard = document.getElementById('pokeball-card');
-    pokeballCard.appendChild(pokeballBackground);
-    
-    // Titulo
-    const pokemonTitle = document.getElementById('pokemon-title');
-    pokemonTitle.innerHTML = pokemon.name;
-
-    buildPokemonImage(pokemon)
+    buildDetailCardHtml(pokemon, html)
+    buildPokeballHtml()
+    buildPokemonTitle(pokemon)
+    buildPokemonImageHtml(pokemon)
     buildShinyButton(pokemon)
     buildInfoHtml(pokemon)
     buildEntryHtml(pokemon)
@@ -88,7 +100,23 @@ function buildDetailHtml(pokemon, html) {
         variation.buildVariationsHtml(pokemon)
 }
 
-function buildPokemonImage(pokemon){
+function buildDetailCardHtml(pokemon, html){
+    const detailScreen = document.getElementById('detailScreen');
+    detailScreen.innerHTML = html;
+    detailScreen.className = `content details-content ${pokemon.type}-background`;
+}
+
+function buildPokeballHtml(){
+    const pokeballCard = document.getElementById('pokeball-card');
+    pokeballCard.appendChild(pokeballBackground);
+}
+
+function buildPokemonTitle(pokemon){
+    const pokemonTitle = document.getElementById('pokemon-title');
+    pokemonTitle.innerHTML = pokemon.name;
+}
+
+function buildPokemonImageHtml(pokemon){
     const img = new Image();
     img.src = pokemon.activeImage;
 
@@ -226,15 +254,7 @@ async function getDetailHtmlById(id){
     const pokemon = pokeApi.getPokemons(offset + id, 1)
         .then((pokemons) => pokemons[0])
 
-    getDetailHtml(pokemon)
-}
-
-async function getDetailHtml(pokemon){
-    const html =  fetch('detail.html')
-        .then(response => response.text())
-
-    await Promise.all([pokemon, html])
-        .then(([pokemon, html]) => buildDetailHtml(pokemon, html))
+    pokemonDetails.getDetailHtml(pokemon)
 }
 
 function buildShinyButton(pokemon){
@@ -245,43 +265,26 @@ function buildShinyButton(pokemon){
     `
 
     esperarCarregar('#default-option', (element) => {
-        element.addEventListener('click', () => {
-            if (!element.classList.contains('selected')){
-                pokemon.activeImage = pokemon.photo;
-                changeSelected(element, "shiny-option")
-                pokeApi.buildPokemonImage(pokemon);
-            }
-        })
+        element.addEventListener('click', () => 
+            changeSelectedImage(element, 'shiny-option', pokemon, pokemon.photo)
+        )
     })
 
-    esperarCarregar('#shiny-option', (element) => { 
-        element.addEventListener('click', () => {
-            if (!element.classList.contains('selected')){
-                pokemon.activeImage = pokemon.shiny;
-                changeSelected(element, "default-option")
-                pokeApi.buildPokemonImage(pokemon);
-            }
-        })
-    })  
+    esperarCarregar('#shiny-option', (element) => 
+        element.addEventListener('click', () => 
+            changeSelectedImage(element, 'default-option', pokemon, pokemon.shiny)
+        )
+    )  
 }
 
-function esperarCarregar(selector, callback) {
-    const observer = new MutationObserver((mutations, observer) => {
-        const element = document.querySelector(selector)
-        if (element) {
-            observer.disconnect()
-            callback(element)
-        }
-    })
+function changeSelectedImage(element, otherOption, pokemon, image){
+    if (!element.classList.contains('selected')){
+        pokemon.activeImage = image;
+        
+        const otherButton = document.getElementById(otherOption);
+        otherButton.classList.remove('selected');
+        element.classList.add('selected');
 
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    })
-}
-
-function changeSelected(element, otherOption){
-    const otherButton = document.getElementById(otherOption);
-    otherButton.classList.remove('selected')
-    element.classList.add('selected')
+        buildPokemonImageHtml(pokemon);
+    }
 }
