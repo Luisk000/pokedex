@@ -83,11 +83,9 @@ async function buildDadosComplexos(pokemon, pokeDetail){
     return fetch(pokeDetail.species.url)
         .then((response) => response.json())
         .then(async (dados) => {
+            buildCategory(pokemon, dados)
             buildEntry(pokemon, dados)
-
-            pokemon.category = dados.genera.find(p => p.language.name == "en").genus
-
-            const genders = getPokemonGenders(pokemon)
+            getPokemonGenders(pokemon)
 
             const variacoes = 
                 dados.varieties.length == 1 ? "" :
@@ -95,8 +93,12 @@ async function buildDadosComplexos(pokemon, pokeDetail){
 
             const evolucoes = getEvolucoes(pokemon, dados)
 
-            await Promise.all([genders, variacoes, evolucoes])
+            await Promise.all([variacoes, evolucoes])
         })
+}
+
+function buildCategory(pokemon, dados){
+    pokemon.category = dados.genera.find(p => p.language.name == "en").genus
 }
 
 function buildEntry(pokemon, dados){

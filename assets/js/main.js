@@ -40,7 +40,6 @@ function addPokemonDetailsScripts(){
     pokemonDetails.openDetailsScreen()
 }
 
-
 firstPageButton.addEventListener('click', () => {
     offset = 0;   
     getPokemon();

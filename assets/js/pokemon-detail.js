@@ -59,32 +59,7 @@ function preparePokemonScreen(id){
     selectedPokemon = id;
     document.getElementById('main').appendChild(section)
 
-    getDetailHtml(id)
-}
-
-async function getDetailHtml(id){
-    const pokemon = pokeApi.getPokemons(offset + id, 1)
-        .then((pokemons) => pokemons[0])
-    
-    const html =  fetch('detail.html')
-        .then(response => response.text())
-
-    await Promise.all([pokemon, html])
-        .then(([pokemon, html]) => buildDetailHtml(pokemon, html))
-}
-
-async function getVariationDetailHtml(number){
-    console.log(number)
-    const url = `https://pokeapi.co/api/v2/pokemon/${number}/`
-
-    const pokemon = pokeApi.getPokemonDetail(url)
-        .then((pokemonDetail) => pokemonDetail)
-    
-    const html =  fetch('detail.html')
-        .then(response => response.text())
-
-    await Promise.all([pokemon, html])
-        .then(([pokemon, html]) => buildDetailHtml(pokemon, html))
+    getDetailHtmlById(id)
 }
 
 function buildDetailHtml(pokemon, html) {
@@ -266,7 +241,7 @@ async function buildEvolutionsHtml(pokemon){
         const number = item.getAttribute('number');
         if (number != null){
             item.addEventListener('click', () => {
-                getVariationDetailHtml(number)
+                getDetailHtmlByNumber(number)
                 window.scrollTo(0, 0);
             })
         }
@@ -361,10 +336,34 @@ function buildVariationsHtml(pokemon){
     listVariationItems.forEach((item) => {
         const number = item.getAttribute('number');
         item.addEventListener('click', () => {
-            getVariationDetailHtml(number)
+            getDetailHtmlByNumber(number)
             window.scrollTo(0, 0);
         })
     })
+}
+
+async function getDetailHtmlByNumber(number){
+    const url = `https://pokeapi.co/api/v2/pokemon/${number}/`
+
+    const pokemon = pokeApi.getPokemonDetail(url)
+        .then((pokemonDetail) => pokemonDetail)
+
+    getDetailHtml(pokemon)
+}
+
+async function getDetailHtmlById(id){
+    const pokemon = pokeApi.getPokemons(offset + id, 1)
+        .then((pokemons) => pokemons[0])
+
+    getDetailHtml(pokemon)
+}
+
+async function getDetailHtml(pokemon){
+    const html =  fetch('detail.html')
+        .then(response => response.text())
+
+    await Promise.all([pokemon, html])
+        .then(([pokemon, html]) => buildDetailHtml(pokemon, html))
 }
 
 function buildShinyButton(pokemon){
