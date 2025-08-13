@@ -1,12 +1,12 @@
-let listItems = null;
-let listVariationItems = null;
-let listEvolutionItems = null;
-let selectedPokemon = null;
-
 const pokemonDetails = {}
 const pokeballBackground = document.createElement('img');
 const mainContent = document.getElementById('main-content')
 const section = document.createElement('section');
+
+let listItems = null;
+let listVariationItems = null;
+let listEvolutionItems = null;
+let selectedPokemon = null;
 
 pokeballBackground.src = "images/pokeball.png"
 

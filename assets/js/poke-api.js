@@ -1,9 +1,5 @@
 const pokeApi = {}
 const evolutionChains = []
-let pokemonsMasculinos = []
-let pokemonsFemininos = []
-let pokemonsSemGenero = []
-let gotGenders = false;
 
 pokeApi.getPokemonDetail = (url) => {
     return fetch(url)
@@ -12,7 +8,6 @@ pokeApi.getPokemonDetail = (url) => {
 }
 
 pokeApi.getPokemons = async (offset = 0, limit = 20) => {
-    await getGenders();
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
     return fetch(url)
         .then((response) => response.json())
@@ -85,7 +80,7 @@ async function buildDadosComplexos(pokemon, pokeDetail){
         .then(async (dados) => {
             buildCategory(pokemon, dados)
             buildEntry(pokemon, dados)
-            getPokemonGenders(pokemon)
+            gender.getPokemonGenders(pokemon)
 
             const variacoes = 
                 dados.varieties.length == 1 ? "" :
@@ -123,7 +118,6 @@ async function getVariacoes(pokemon, dados){
     pokemon.variations = await Promise.all(variacoesPromise);
     pokemon.variations.map((variacao) => variacao.variations = variacao)
 }
-
 
 async function getEvolucoes(pokemon, dados){
     await fetch(dados.evolution_chain.url)
@@ -181,43 +175,3 @@ async function buildEvolutionChainEvolutions(evolutionChain, pokemon, chain, i){
         })
     }
 } 
-
-async function getGenders(){
-    const pokemonsFemininosPromise = fetch('https://pokeapi.co/api/v2/gender/1')
-        .then((result) => result.json())
-        .then((pokemons) => pokemonsFemininos = pokemons)
-
-    const pokemonsMasculinosPromise = fetch('https://pokeapi.co/api/v2/gender/2')
-        .then((result) => result.json())
-        .then((pokemons) => pokemonsMasculinos = pokemons)
-    
-    const pokemonsSemGeneroPromise = fetch('https://pokeapi.co/api/v2/gender/3')
-        .then((result) => result.json())
-        .then((pokemons) => pokemonsSemGenero = pokemons)
-
-    await Promise.all([pokemonsFemininosPromise, pokemonsMasculinosPromise, pokemonsSemGeneroPromise])
-}
-
-async function getPokemonGenders(pokemon){
-    let pokemonFeminino = pokemonsFemininos.pokemon_species_details
-        .find(p => p.pokemon_species.name == pokemon.name)
-
-    let pokemonMasculino = pokemonsMasculinos.pokemon_species_details
-        .find(p => p.pokemon_species.name == pokemon.name)
-
-    let pokemonSemGenero = pokemonsSemGenero.pokemon_species_details
-        .find(p => p.pokemon_species.name == pokemon.name)
-
-    let genders = []
-
-    if (pokemonMasculino)
-        genders.push("&male;")
-
-    if (pokemonFeminino)
-        genders.push("&female;")
-
-    if (pokemonSemGenero)
-        genders.push("Genderless")
-
-    pokemon.genders = genders.join(" / ");
-}

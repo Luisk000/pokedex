@@ -68,4 +68,5 @@ lastPageButton.addEventListener('click', () => {
     pokemonDetails.closeDetailsScreen(); 
 })
 
+gender.getGenders();
 getPokemon();

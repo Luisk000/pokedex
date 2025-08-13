@@ -98,7 +98,7 @@
     } 
 
     .evolutions-list{
-        max-width: 50vw;
+        width: 40vw;
     }
 }
 
@@ -130,10 +130,6 @@
 
     .details-content{
         width: 53%;
-    }
-
-    .evolutions-list{
-        max-width: 40vw
     }
 }
 
@@ -217,8 +213,8 @@
 }
 
 @media screen and (min-width: 1020px){
-       .evolutions-list{
-        max-width: 38vw
+    .evolutions-list{
+        width: 38vw
     }
 }
 
