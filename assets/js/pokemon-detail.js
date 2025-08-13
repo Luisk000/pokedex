@@ -85,7 +85,7 @@ function buildDetailHtml(pokemon, html) {
     if (pokemon.evolutionChain.pokemons.length > 1)
         evolution.buildEvolutionsHtml(pokemon)
     if (pokemon.variations.length > 1)
-        buildVariationsHtml(pokemon)
+        variation.buildVariationsHtml(pokemon)
 }
 
 function buildPokemonImage(pokemon){
@@ -222,49 +222,6 @@ async function getAbilitysDescription(abilities){
     return result;
 }
 
-function buildVariationsHtml(pokemon){
-    const bottom = document.getElementById('bottom');
-    bottom.innerHTML += `
-            <div class="card">
-                <h3 class="card-title">Forms</h3>
-                <div class="variations-list" id="variations-list"></div>
-            </div>
-        `
-
-    const variationsList = document.getElementById('variations-list');
-    const variacaoAtual = pokemon.variations.findIndex(p => p.number == pokemon.number)
-
-    pokemon.variations.splice(variacaoAtual, 1)
-    pokemon.variations.forEach((pokemonVariation) => {
-        variationsList.innerHTML += `
-            <div class='variation' id='pokemon${pokemonVariation.number}' number='${pokemonVariation.number}'>
-                <div class="variation-img-background">
-                    <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>
-                </div>                     
-                <p class='variation-name'>${pokemonVariation.name}</p>
-            </div>
-        `
-    })
-
-    listVariationItems = variationsList.querySelectorAll(":scope > div")
-    listVariationItems.forEach((item) => {
-        const number = item.getAttribute('number');
-        item.addEventListener('click', () => {
-            getDetailHtmlByNumber(number)
-            window.scrollTo(0, 0);
-        })
-    })
-}
-
-async function getDetailHtmlByNumber(number){
-    const url = `https://pokeapi.co/api/v2/pokemon/${number}/`
-
-    const pokemon = pokeApi.getPokemonDetail(url)
-        .then((pokemonDetail) => pokemonDetail)
-
-    getDetailHtml(pokemon)
-}
-
 async function getDetailHtmlById(id){
     const pokemon = pokeApi.getPokemons(offset + id, 1)
         .then((pokemons) => pokemons[0])
@@ -292,7 +249,7 @@ function buildShinyButton(pokemon){
             if (!element.classList.contains('selected')){
                 pokemon.activeImage = pokemon.photo;
                 changeSelected(element, "shiny-option")
-                buildPokemonImage(pokemon);
+                pokeApi.buildPokemonImage(pokemon);
             }
         })
     })
@@ -302,7 +259,7 @@ function buildShinyButton(pokemon){
             if (!element.classList.contains('selected')){
                 pokemon.activeImage = pokemon.shiny;
                 changeSelected(element, "default-option")
-                buildPokemonImage(pokemon);
+                pokeApi.buildPokemonImage(pokemon);
             }
         })
     })  

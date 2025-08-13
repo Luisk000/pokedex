@@ -1,11 +1,5 @@
 const pokeApi = {}
 
-pokeApi.getPokemonDetail = (url) => {
-    return fetch(url)
-        .then((response) => response.json())
-        .then((pokeDetail) => convertPokeApiDetailToPokemon(pokeDetail))
-}
-
 pokeApi.getPokemons = async (offset = 0, limit = 20) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
     return fetch(url)
@@ -18,14 +12,13 @@ pokeApi.getPokemons = async (offset = 0, limit = 20) => {
         .catch((error) => console.log(error))
 }
 
-async function convertPokeApiDetailToPokemon(pokeDetail) {
-    const pokemon = new Pokemon();
-    buildPokemon(pokemon, pokeDetail)
-    await buildDadosComplexos(pokemon, pokeDetail);
-    return pokemon
+pokeApi.getPokemonDetail = (url) => {
+    return fetch(url)
+        .then((response) => response.json())
+        .then((pokeDetail) => convertPokeApiDetailToPokemon(pokeDetail))
 }
 
-function buildPokemon(pokemon, pokeDetail){
+pokeApi.buildPokemon = (pokemon, pokeDetail) => {
     pokemon.number = pokeDetail.id;
     pokemon.name = pokeDetail.name.replace("-"," ");
     pokemon.photo = pokeDetail.sprites.other["official-artwork"].front_default
@@ -39,19 +32,13 @@ function buildPokemon(pokemon, pokeDetail){
     pokemon.weight = converterNumero(pokeDetail.weight, pokemon) + "kg";
 }
 
-function converterNumero(number, pokemon) {
-    number = number.toString()
-    if (pokemon.number == 3){
-    }
-    if (number.length == 1)
-        return "0." + number
-    else
-    {
-        let lastChar = number.substr(number.length - 1);
-        number = number.slice(0, -1);
-        return number + "." + lastChar;
-    }
+async function convertPokeApiDetailToPokemon(pokeDetail) {
+    const pokemon = new Pokemon();
+    pokeApi.buildPokemon(pokemon, pokeDetail)
+    await buildDadosComplexos(pokemon, pokeDetail);
+    return pokemon
 }
+
 
 function converterStats(pokeDetail){
     const stats = pokeDetail.stats.map((stat) => {
@@ -73,6 +60,20 @@ function converterAbilities(pokeDetail) {
     return abilities;
 }
 
+function converterNumero(number, pokemon) {
+    number = number.toString()
+    if (pokemon.number == 3){
+    }
+    if (number.length == 1)
+        return "0." + number
+    else
+    {
+        let lastChar = number.substr(number.length - 1);
+        number = number.slice(0, -1);
+        return number + "." + lastChar;
+    }
+}
+
 async function buildDadosComplexos(pokemon, pokeDetail){
     return fetch(pokeDetail.species.url)
         .then((response) => response.json())
@@ -83,7 +84,7 @@ async function buildDadosComplexos(pokemon, pokeDetail){
 
             const variacoes = 
                 dados.varieties.length == 1 ? "" :
-                getVariacoes(pokemon, dados)
+                await variation.getVariacoes(pokemon, dados)
 
             const evolucoes = await evolution.getEvolutions(pokemon, dados)
 
@@ -102,19 +103,3 @@ function buildEntry(pokemon, dados){
     pokemon.activeGameVersion = lastEntry.version.name;
     pokemon.gameVersions = englishEntries
 }
-
-async function getVariacoes(pokemon, dados){ 
-    const variacoesPromise = dados.varieties.map((variacao) => 
-        fetch(variacao.pokemon.url)
-            .then((response) => response.json())
-            .then((pokemonDados) => {
-                let pokemon = new Pokemon();
-                buildPokemon(pokemon, pokemonDados);
-                return pokemon;
-            })
-    )
-
-    pokemon.variations = await Promise.all(variacoesPromise);
-    pokemon.variations.map((variacao) => variacao.variations = variacao)
-}
-

@@ -68,7 +68,7 @@ async function getNewEvolutionChain(evolutionChain, pokemonDados, chain, i){
     }
 
     let pokemon = new Pokemon();
-    buildPokemon(pokemon, pokemonDados);
+    pokeApi.buildPokemon(pokemon, pokemonDados);
 
     evolutionChain.pokemons.push(pokemon)  
     evolutionChains.push(evolutionChain)
