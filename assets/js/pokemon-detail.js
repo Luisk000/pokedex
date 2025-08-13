@@ -97,19 +97,12 @@ function buildDetailHtml(pokemon, html) {
     const pokeballCard = document.getElementById('pokeball-card');
     pokeballCard.appendChild(pokeballBackground);
     
-    // Imagem do Pokémon
-    const pokemonImage = document.createElement('img')
-    pokemonImage.src = pokemon.photo;
-    pokemonImage.className = 'pokemon-image';
-
-    // Adiciona a imagem do Pokémon ao card
-    const imageCard = document.getElementById('image-card');
-    imageCard.appendChild(pokemonImage)
-
     // Titulo
     const pokemonTitle = document.getElementById('pokemon-title');
     pokemonTitle.innerHTML = pokemon.name;
 
+    buildPokemonImage(pokemon)
+    switchToShinyButton(pokemon)
     buildInfoHtml(pokemon)
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
@@ -118,6 +111,17 @@ function buildDetailHtml(pokemon, html) {
         buildEvolutionsHtml(pokemon)
     if (pokemon.variations.length > 1)
         buildVariationsHtml(pokemon)
+}
+
+function buildPokemonImage(pokemon){
+    // Imagem do Pokémon
+    const pokemonImage = document.createElement('img')
+    pokemonImage.src = pokemon.activeImage;
+    pokemonImage.className = 'pokemon-image';
+
+    // Adiciona a imagem do Pokémon ao card
+    const imageCard = document.getElementById('image-card');
+    imageCard.appendChild(pokemonImage)
 }
 
 function buildInfoHtml(pokemon){
@@ -337,7 +341,36 @@ function buildVariationsHtml(pokemon){
     })
 }
 
-function switchToShinyButton(){
-    const defaultButton = document.getElementById("");
-    const shinyButton = document.getElementById("");
+function switchToShinyButton(pokemon){
+    let defaultButton;
+    let shinyButton;
+
+    setTimeout(() => {
+        defaultButton = document.getElementById("default-option");
+        shinyButton = document.getElementById("shiny-option");
+
+        defaultButton.addEventListener('click', () => {
+            if (!defaultButton.classList.contains('selected')){
+                pokemon.activeImage = pokemon.photo;
+                shinyButton.classList.remove('selected')
+                defaultButton.classList.add('selected')
+                rebuildImage(pokemon);
+            }
+        })
+
+        shinyButton.addEventListener('click', () => {
+            if (!shinyButton.classList.contains('selected')){
+                pokemon.activeImage = pokemon.shiny;
+                defaultButton.classList.remove('selected')
+                shinyButton.classList.add('selected')
+                rebuildImage(pokemon);
+            }
+        })
+    },1000)
+}
+
+function rebuildImage(pokemon){
+    const imageCard = document.getElementById('image-card');
+    imageCard.innerHTML = '';
+    buildPokemonImage(pokemon)
 }

@@ -34,6 +34,7 @@ function buildPokemon(pokemon, pokeDetail){
     pokemon.name = pokeDetail.name.replace("-"," ");
     pokemon.photo = pokeDetail.sprites.other["official-artwork"].front_default
     pokemon.shiny = pokeDetail.sprites.other["official-artwork"].front_shiny
+    pokemon.activeImage = pokemon.photo;
     pokemon.types = pokeDetail.types.map((typeSlot) => typeSlot.type.name);
     pokemon.type = pokemon.types[0];
     pokemon.stats = converterStats(pokeDetail);
@@ -193,7 +194,6 @@ async function getPokemonGenders(pokemon){
     let pokemonMasculino = pokemonsMasculinos.pokemon_species_details
         .find(p => p.pokemon_species.name == pokemon.name)
 
-    //As vezes o app não carrega por causa dessa linha
     let pokemonSemGenero = pokemonsSemGenero.pokemon_species_details
         .find(p => p.pokemon_species.name == pokemon.name)
 

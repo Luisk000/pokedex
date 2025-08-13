@@ -3,6 +3,7 @@ class Pokemon {
     name;
     photo;
     shiny;
+    activeImage;
     type;
     evolutionChain;
     evolvesTo = new Array();
