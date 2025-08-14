@@ -13,6 +13,7 @@
     font-size: 9px;
     padding: 4px 7px 4px 7px;
     border-radius: 5px;
+    filter: drop-shadow(0 0 0.1rem black);
 }
 
 .btn-pagination-small{
@@ -28,6 +29,11 @@
     transform:scale(1.05);
 }
 
+.button-group {
+    display: flex;
+    gap: 5px;
+}
+
 @media screen and (min-width: 310px){
     .btn-pagination{
         font-size: 12px;
@@ -37,6 +43,10 @@
     .btn-pagination-small{
         padding: 8px;
         margin: 0px;
+    }
+
+     .button-group {
+        gap: 7px;
     }
 }
 
@@ -49,5 +59,9 @@
 
     .btn-pagination-small{
         padding: 10px;
+    }
+
+    .button-group {
+        gap: 10px;
     }
 }

@@ -40,3 +40,9 @@
         }
     }
 }
+
+@media screen and (min-width: 1020px) and (max-width: 1120px){
+    .evolutions-list, .variations-list{
+        width: 50vw;
+    }
+}
