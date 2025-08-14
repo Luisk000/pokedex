@@ -17,6 +17,8 @@
     --grass: rgb(99 188 92);
     --ice: rgb(118 206 192);
     --steel: rgb(91 144 163);
+
+    --degree: 150deg;
 }
 
 .fighting{
@@ -128,75 +130,79 @@
 }
 
 .secondary-fighting{
-    background: linear-gradient(150deg, transparent 80%, var(--fighting) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--fighting) 90%);
 }
 
 .secondary-psychic{
-    background: linear-gradient(150deg, transparent 80%, var(--psychic) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--psychic) 90%);
 }
 
 .secondary-poison{
-    background: linear-gradient(150deg, transparent 80%, var(--poison) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--poison) 90%);
 }
 
 .secondary-dragon{
-    background: linear-gradient(150deg, transparent 80%, var(--dragon) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--dragon) 90%);
 }
 
 .secondary-ghost{
-    background: linear-gradient(150deg, transparent 80%, var(--ghost) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--ghost) 90%);
 }
 
 .secondary-dark{
-    background: linear-gradient(150deg, transparent 80%, var(--dark) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--dark) 90%);
 }
 
 .secondary-ground{
-    background: linear-gradient(150deg, transparent 80%, var(--ground) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--ground) 90%);
 }
 
 .secondary-fire{
-    background: linear-gradient(150deg, transparent 80%, var(--fire) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--fire) 90%);
 }
 
 .secondary-fairy{
-    background: linear-gradient(150deg, transparent 80%, var(--fairy) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--fairy) 90%);
 }
 
 .secondary-water{
-    background: linear-gradient(150deg, transparent 80%, var(--water) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--water) 90%);
 }
 
 .secondary-flying{
-    background: linear-gradient(150deg, transparent 80%, var(--flying) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--flying) 90%);
 }
 
 .secondary-normal{
-    background: linear-gradient(150deg, transparent 80%, var(--normal) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--normal) 90%);
 }
 
 .secondary-rock{
-    background: linear-gradient(150deg, transparent 80%, var(--rock) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--rock) 90%);
 }
 
 .secondary-electric{
-    background: linear-gradient(150deg, transparent 80%, var(--electric) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--electric) 90%);
 }
 
 .secondary-bug{
-    background: linear-gradient(150deg, transparent 80%, var(--bug) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--bug) 90%);
 }
 
 .secondary-grass{
-    background: linear-gradient(150deg, transparent 80%, var(--grass) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--grass) 90%);
 }
 
 .secondary-ice{
-    background: linear-gradient(150deg, transparent 80%, var(--ice) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--ice) 90%);
 }
 
 .secondary-steel{
-    background: linear-gradient(150deg, transparent 80%, var(--steel) 90%);
+    background: linear-gradient(var(--degree), transparent 80%, var(--steel) 90%);
+}
+
+.top-left-gradient{
+    --degree: 15deg
 }
 
 /* .fighting-light{
