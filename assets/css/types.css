@@ -1,91 +1,202 @@
+:root{
+    --fighting: rgb(208 64 106);
+    --psychic: rgb(240 115 120);
+    --poison: rgb(171 106 201);
+    --dragon: rgb(13 109 200);
+    --ghost: rgb(82 107 174);
+    --dark: rgb(92 84 103);
+    --ground: rgb(219 121 70);
+    --fire: rgb(255 156 85);
+    --fairy: rgb(235 143 229);
+    --water: rgb(77 144 212);
+    --flying: rgb(144 169 222);
+    --normal: rgb(143 153 161);
+    --rock: rgb(197 184 138);
+    --electric: rgb(243 210 59);
+    --bug: rgb(144 194 45);
+    --grass: rgb(99 188 92);
+    --ice: rgb(118 206 192);
+    --steel: rgb(91 144 163);
+}
+
 .fighting{
-    background-color: rgb(208 64 106);
+    background-color: var(--fighting);
     color: white;
+    font-weight: 400;
 }
 
 .psychic{
-    background-color: rgb(240 115 120);
+    background-color: var(--psychic);
     color: white;
+    font-weight: 400;
 }
 
 .poison{
-    background-color: rgb(171 106 201);
+    background-color: var(--poison);
     color: white;
+    font-weight: 400;
 }
 
 .dragon{
-    background-color: rgb(13 109 200);
+    background-color: var(--dragon);
     color: white;
+    font-weight: 400;
 }
 
 .ghost{
-    background-color: rgb(82 107 174);
+    background-color: var(--ghost);
     color: white;
+    font-weight: 400;
 }
 
 .dark{
-    background-color: rgb(92 84 103);
+    background-color: var(--dark);
     color: white;
+    font-weight: 400;
 }
 
 .ground{
-    background-color: rgb(219 121 70);
+    background-color: var(--ground);
     color: white;
+    font-weight: 400;
 }
 
 .fire{
-    background-color: rgb(255 156 85);
+    background-color: var(--fire);
     color: rgb(40, 40, 40);
+    font-weight: 600;
 }
 
 .fairy{
-    background-color: rgb(235 143 229);
+    background-color: var(--fairy);
     color: rgb(40, 40, 40);
+    font-weight: 600;
 }
 
 .water{
-    background-color: rgb(77 144 212);
+    background-color: var(--water);
     color: white;
+    font-weight: 400;
 }
 
 .flying{
-    background-color: rgb(144 169 222);
+    background-color: var(--flying);
     color: rgb(40, 40, 40);
+    font-weight: 600;
 }
 
 .normal{
-    background-color: rgb(143 153 161);
+    background-color: var(--normal);
     color: white;
+    font-weight: 400;
 }
 
 .rock{
-    background-color: rgb(197 184 138);
+    background-color: var(--rock);
     color: rgb(40, 40, 40);
+    font-weight: 600;
 }
 
 .electric{
-    background-color: rgb(243 210 59);
+    background-color: var(--electric);
     color: rgb(40, 40, 40);
+    font-weight: 600;
 }
 
 .bug{
-    background-color: rgb(144 194 45);
+    background-color: var(--bug);
     color: rgb(40, 40, 40);
+    font-weight: 600;
 }
 
 .grass{
-    background-color: rgb(99 188 92);
+    background-color: var(--grass);
     color: rgb(40, 40, 40);
+    font-weight: 600;
 }
 
 .ice{
-    background-color: rgb(118 206 192);
+    background-color: var(--ice);
     color: rgb(40, 40, 40);
+    font-weight: 600;
 }
 
 .steel{
-    background-color: rgb(91 144 163);
+    background-color: var(--steel);
     color: rgb(40, 40, 40);
+    font-weight: 600;
+}
+
+.secondary-fighting{
+    background: linear-gradient(150deg, transparent 80%, var(--fighting) 90%);
+}
+
+.secondary-psychic{
+    background: linear-gradient(150deg, transparent 80%, var(--psychic) 90%);
+}
+
+.secondary-poison{
+    background: linear-gradient(150deg, transparent 80%, var(--poison) 90%);
+}
+
+.secondary-dragon{
+    background: linear-gradient(150deg, transparent 80%, var(--dragon) 90%);
+}
+
+.secondary-ghost{
+    background: linear-gradient(150deg, transparent 80%, var(--ghost) 90%);
+}
+
+.secondary-dark{
+    background: linear-gradient(150deg, transparent 80%, var(--dark) 90%);
+}
+
+.secondary-ground{
+    background: linear-gradient(150deg, transparent 80%, var(--ground) 90%);
+}
+
+.secondary-fire{
+    background: linear-gradient(150deg, transparent 80%, var(--fire) 90%);
+}
+
+.secondary-fairy{
+    background: linear-gradient(150deg, transparent 80%, var(--fairy) 90%);
+}
+
+.secondary-water{
+    background: linear-gradient(150deg, transparent 80%, var(--water) 90%);
+}
+
+.secondary-flying{
+    background: linear-gradient(150deg, transparent 80%, var(--flying) 90%);
+}
+
+.secondary-normal{
+    background: linear-gradient(150deg, transparent 80%, var(--normal) 90%);
+}
+
+.secondary-rock{
+    background: linear-gradient(150deg, transparent 80%, var(--rock) 90%);
+}
+
+.secondary-electric{
+    background: linear-gradient(150deg, transparent 80%, var(--electric) 90%);
+}
+
+.secondary-bug{
+    background: linear-gradient(150deg, transparent 80%, var(--bug) 90%);
+}
+
+.secondary-grass{
+    background: linear-gradient(150deg, transparent 80%, var(--grass) 90%);
+}
+
+.secondary-ice{
+    background: linear-gradient(150deg, transparent 80%, var(--ice) 90%);
+}
+
+.secondary-steel{
+    background: linear-gradient(150deg, transparent 80%, var(--steel) 90%);
 }
 
 /* .fighting-light{

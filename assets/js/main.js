@@ -23,7 +23,12 @@ function converterPokemonTypesHtml(pokemonTypes) {
 }
 
 function converterPokemonHtml(pokemon) {
+    let secondaryType = "";
+    if (pokemon.types[1])
+        secondaryType = `<div class="gradient secondary-${pokemon.types[1]}"></div>`
+
     return `<li class="pokemon ${pokemon.type}" id="pokemon${pokemon.number}">
+                ${secondaryType}
                 <span class="number">#${pokemon.number}</span>
                 <span class="name">${pokemon.name}</span>         
                 <div class="detail">
