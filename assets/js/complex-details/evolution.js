@@ -103,6 +103,7 @@ async function buildFirstEvolutionHtml(firstEvolution){
 }
 
 async function buildNextEvolutionsHtml(allPokemon, evolutions, i){
+
     const evolutionsList = document.getElementById('evolutions-list')
     evolutionsList.innerHTML += `<div class='evolution-column' id='evolution-column-${i}'></div>`
     const evolutionColumn = document.getElementById(`evolution-column-${i}`)
@@ -141,6 +142,7 @@ async function buildNextEvolutionsHtml(allPokemon, evolutions, i){
     let hasNextEvolutions = nextEvolutions.filter((evolutions) => evolutions != undefined && evolutions.length > 0).length > 0
     if (hasNextEvolutions){
         i++;
+        nextEvolutions = nextEvolutions.flat(1)
         buildNextEvolutionsHtml(allPokemon, nextEvolutions, i)
     }
 }
