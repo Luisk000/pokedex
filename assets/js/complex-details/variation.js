@@ -36,7 +36,7 @@ variation.buildVariationsHtml = (pokemon) => {
                 <div class="variation-img-background">
                     <img src='${pokemonVariation.photo}' ref='${pokemonVariation.photo}'>
                 </div>                     
-                <p class='variation-name'>${pokemonVariation.name}</p>
+                <div class='variation-name'>${pokemonVariation.name}</div>
             </div>
         `
     })

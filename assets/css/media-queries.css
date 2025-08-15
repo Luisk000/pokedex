@@ -339,6 +339,12 @@
     }
 }
 
+@media screen and (min-width: 1350px){
+    .evolutions-list, .variations-list{
+        width: 45vw;
+    }
+}
+
 @media screen and (min-width: 1380px){
     .opened-pokemon-details .main .main-content .pokemons{
         max-width: fit-content;
