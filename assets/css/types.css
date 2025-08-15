@@ -202,7 +202,14 @@
 }
 
 .top-left-gradient{
-    --degree: 15deg
+    --degree: 325deg;
+    left: 0;
+    top: 0;
+}
+
+.detail-gradient{
+    height: 210px;
+    border-radius: 1rem;
 }
 
 /* .fighting-light{
@@ -439,6 +446,10 @@
     .steel-background{
         background: linear-gradient(to bottom, rgb(91 144 163) 260px, white 290px);
     }
+
+    .detail-gradient{
+        height: 260px;
+    }
 }
 
 @media screen and (min-width: 850px){
@@ -513,6 +524,10 @@
     .steel-background{
         background: linear-gradient(to bottom, rgb(91 144 163) 250px, white 280px);
     }
+
+    .detail-gradient{
+        height: 250px;
+    }
 }
 
 @media screen and (min-width: 1250px){
@@ -586,6 +601,10 @@
 
     .steel-background{
         background: linear-gradient(to bottom, rgb(91 144 163) 320px, white 350px);
+    }
+
+    .detail-gradient{
+        height: 320px;
     }
 } 
 

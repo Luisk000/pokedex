@@ -85,7 +85,7 @@ function preparePokemonScreen(id){
 
 function buildDetailHtml(pokemon, html) {
     buildDetailCardHtml(pokemon, html)
-    buildPokeballHtml()
+    buildPokeballHtml()    
     buildPokemonTitle(pokemon)
     buildPokemonImageHtml(pokemon)
     buildShinyButton(pokemon)
@@ -93,11 +93,22 @@ function buildDetailHtml(pokemon, html) {
     buildEntryHtml(pokemon)
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
+    buildTopGradient(pokemon)
 
     if (pokemon.evolutionChain.pokemons.length > 1)
         evolution.buildEvolutionsHtml(pokemon)
     if (pokemon.variations.length > 1)
         variation.buildVariationsHtml(pokemon)
+}
+
+function buildTopGradient(pokemon){
+    const top = document.getElementById('top');
+    
+    let secondaryType = "";
+    if (pokemon.types[1])
+        secondaryType = `<div class="detail-gradient secondary-${pokemon.types[1]} top-left-gradient"></div>`
+
+    top.innerHTML += secondaryType
 }
 
 function buildDetailCardHtml(pokemon, html){
@@ -126,10 +137,10 @@ function buildPokemonImageHtml(pokemon){
 
     img.onload = function(){
         const imageCard = document.getElementById('image-card');
+             
         imageCard.innerHTML = '';
         imageCard.appendChild(pokemonImage)
     }
-
 }
 
 function buildInfoHtml(pokemon){
