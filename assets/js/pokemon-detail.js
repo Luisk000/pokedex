@@ -25,9 +25,9 @@ pokemonDetails.openDetailsScreen = () => {
 }
 
 pokemonDetails.closeDetailsScreen = (pageChange = false) => {
-    const pokemonList = document.getElementById('pokemonList')
-    if (pokemonList.classList.contains('opened-pokemon-details'))
-        pokemonList.classList.remove('opened-pokemon-details')
+    const main = document.getElementById('main')
+    if (main.classList.contains('opened-pokemon-details'))
+        main.classList.remove('opened-pokemon-details')
 
     mainContent.className = "content main-content";
 
@@ -73,12 +73,12 @@ function verifyDetailsScreen(id) {
 }
 
 function preparePokemonScreen(id){
-    const pokemonList = document.getElementById('pokemonList')
-    if (!pokemonList.classList.contains('opened-pokemon-details'))
-        pokemonList.className += " opened-pokemon-details"
+    const main = document.getElementById('main')
+    if (!main.classList.contains('opened-pokemon-details'))
+        main.className += " opened-pokemon-details"
 
     selectedPokemon = id;
-    document.getElementById('main').appendChild(section)
+    main.appendChild(section)
 
     getDetailHtmlById(id)
 }
