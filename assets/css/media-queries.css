@@ -28,7 +28,6 @@
 }
 
 @media screen and (min-width: 400px){
-
     .variation-name, .evolution-name{
         font-size: 14px;
     }
@@ -75,15 +74,19 @@
 
 
 @media screen and (min-width: 600px){
-    .main{
-        order: 1
+    .opened-pokemon-details{
+        .details-content{
+            width:70%;
+            order: 2
+        }
+
+        .main-content{
+            width: 30%;
+        }
     }
 
-    .details-content{
-        order: 2
-    }
-
     .main{
+        order: 1;
         flex-direction: row;
     }
 
@@ -91,12 +94,8 @@
         display: none;
     }
 
-    .details-content{
-        width:65%;
-    }
-
     .evolutions-list, .variations-list{
-        width: 50vw;
+        width: 70vw;
     }
 
     .pokemons {
@@ -123,23 +122,31 @@
     .opened-pokemon-details .pagination{
         display: flex;
     }
+
+    .variations-list{
+        flex-wrap: wrap;
+    }
 }
 
-@media screen and (min-width: 650px){
-
-}
 
 @media screen and (min-width: 700px){
-    .opened-pokemon-details .main .main-content .pokemons{
-        grid-template-columns: 1fr 1fr;
-    }
+    .opened-pokemon-details{
+        .details-content{
+            width:53%;
+        }
 
-    .details-content{
-        width: 53%;
+        .main-content{
+            width: 47%;
+        }
+
     }
 
     .evolutions-list, .variations-list{
-        width: 40vw;
+        width: 53vw;
+    }
+
+    .opened-pokemon-details .main .main-content .pokemons{
+        grid-template-columns: 1fr 1fr;
     }
 
     .main{
@@ -182,17 +189,28 @@
 }
 
 @media screen and (min-width: 915px){
-    .details-content{
-        width: 50%;
+    .opened-pokemon-details{
+        .details-content{
+            width: 50%;
+        }
+
+        .main-content{
+            width: 50%;
+        }
+    }
+
+    .evolutions-list, .variations-list{
+        width: 50vw;
     }
 
     .stat-bar-background{
         width: 56%;
     }
 
-     .variation-name, .evolution-name{
+    .variation-name, .evolution-name{
         font-size: 16px;
     }
+
     .pokemons {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -200,8 +218,6 @@
     .opened-pokemon-details .main .main-content .pokemons {
         grid-template-columns: 1fr 1fr;
     }
-
-
 }
 
 @media screen and (min-width: 1000px){
@@ -214,36 +230,52 @@
     }
 }
 
-@media screen and (min-width: 1020px){
-    .evolutions-list, .variations-list{
-        width: 38vw;
-    }
-}
-
 @media screen and (min-width: 1090px){
-    .main{
-        gap: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
+    .details-content{
+        width: 100%;
     }
 
     .main-content{
         max-width: 80%;
     }
 
-    .details-content{
-        width: 100%;
+    .main{
+        gap: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}
+
+@media screen and (min-width: 1120px){
+    .opened-pokemon-details{
+        .details-content{
+            width: 43%;
+        }
+
+        .main-content{
+            width: 57%;
+        }
+    }
+
+    .evolutions-list, .variations-list{
+        width: 38vw;
     }
 }
 
 @media screen and (min-width: 1200px){
-    .opened-pokemon-details .main .main-content .pokemons{
-        .pokemon{
-            width: 200px;
+    .opened-pokemon-details{
+        .details-content{
+            width: 100%;
         }
 
         .main-content{
+            width: 680px;
             max-width: fit-content;
+        }
+
+        .pokemon{
+            width: 200px;
         }
     }
 }
@@ -312,13 +344,6 @@
 
     .info-name{
         margin-left: 1.4vw;
-    }
-
-    /* Isso não é o essencial, o problema é que não há como aplicar 
-    código ao main-content se a tela de detalhes estiver aberta (no 
-    caso, com opened-pokemon-details, que é filho de main-content) */
-    .details-content{
-        width: 400%;
     }
 
     .evolutions-list, .variations-list{

@@ -1,4 +1,7 @@
-@media screen and (min-width: 460px) and (max-width: 599px), screen and (min-width: 850px) and (max-width: 1249px) {
+@media 
+    screen and (min-width: 460px) and (max-width: 599px), 
+    screen and (min-width: 850px) and (max-width: 1249px) 
+{
     .opened-pokemon-details .main .main-content .pokemons{
         .pokemon img{
             height: 100px;
