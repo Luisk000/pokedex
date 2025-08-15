@@ -85,7 +85,7 @@
         min-width: 190px;
     } 
 
-    .opened-pokemon-details .main-content .pokemons{
+    .opened-pokemon-details .main .main-content .pokemons{
         grid-template-columns: 1fr;
     }
 
@@ -113,7 +113,7 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .opened-pokemon-details .main-content .pokemons{
+    .opened-pokemon-details .main .main-content .pokemons{
         grid-template-columns: 1fr;
     }
 
@@ -124,7 +124,7 @@
 }
 
 @media screen and (min-width: 650px){
-    .opened-pokemon-details .main-content .pokemons{
+    .opened-pokemon-details .main .main-content .pokemons{
         grid-template-columns: 1fr 1fr;
     }
 
@@ -168,7 +168,7 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .opened-pokemon-details .main-content .pokemons{
+    .opened-pokemon-details .main .main-content .pokemons{
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -189,7 +189,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
-    .opened-pokemon-details .main-content .pokemons {
+    .opened-pokemon-details .main .main-content .pokemons {
         grid-template-columns: 1fr 1fr;
     }
 
@@ -197,7 +197,7 @@
 }
 
 @media screen and (min-width: 1000px){
-    .opened-pokemon-details .main-content .pokemons {
+    .opened-pokemon-details .main .main-content .pokemons {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
@@ -229,7 +229,7 @@
 }
 
 @media screen and (min-width: 1200px){
-    .opened-pokemon-details .main-content .pokemons{
+    .opened-pokemon-details .main .main-content .pokemons{
         .pokemon{
             width: 200px;
         }
@@ -246,7 +246,7 @@
         width: 380px;
     }
 
-    .opened-pokemon-details .main-content .pokemons{
+    .opened-pokemon-details .main .main-content .pokemons{
         .pokemon img{
             height: 100px;
             width: 100px;
@@ -264,7 +264,7 @@
 }
 
 @media screen and (min-width: 1300px){
-    .opened-pokemon-details .main-content .pokemons{
+    .opened-pokemon-details .main .main-content .pokemons{
         .pokemon img{
             height: 110px;
             width: 110px;
@@ -294,7 +294,7 @@
 }
 
 @media screen and (min-width: 1380px){
-    .opened-pokemon-details .main-content .pokemons{
+    .opened-pokemon-details .main .main-content .pokemons{
         max-width: fit-content;
     }
 

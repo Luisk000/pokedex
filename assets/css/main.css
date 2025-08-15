@@ -136,7 +136,7 @@ body {
 }
 /* 1rem = default (geralmente 16px) */
 
-/* .main-content, .pagination{
-    display: none !important;
-} */
+.opened-pokemon-details .main-content{
+
+}
 
