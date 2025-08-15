@@ -52,18 +52,6 @@
 }
 
 @media screen and (min-width: 500px){
-    .main{
-        order: 1
-    }
-
-    .details-content{
-        order: 2
-    }
-
-    .main{
-        flex-direction: row;
-    }
-
     .abilities-list{
         margin-right: 15px;
     }
@@ -84,6 +72,46 @@
         margin-top: 27px;
         min-width: 190px;
     } 
+}
+
+
+@media screen and (min-width: 600px){
+    .main{
+        order: 1
+    }
+
+    .details-content{
+        order: 2
+    }
+
+    .main{
+        flex-direction: row;
+    }
+
+    .return-button {
+        display: none;
+    }
+
+    .details-content{
+        width:65%;
+    }
+
+    .evolutions-list, .variations-list{
+        width: 50vw;
+    }
+
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .abilities-list{
+        margin-left: 40px;
+        margin-bottom: 15px;
+    }
+
+    .stat-bar-background{
+        width: 42%;
+    }
 
     .opened-pokemon-details .main .main-content .pokemons{
         grid-template-columns: 1fr;
@@ -95,43 +123,6 @@
 
     .opened-pokemon-details .pagination{
         display: flex;
-    }
-
-    .return-button {
-        display: none;
-    }
-
-    .details-content{
-        width:65%;
-    }
-
-    .stat-bar-background{
-        width: 32%
-    } 
-
-    .evolutions-list, .variations-list{
-        width: 50vw;
-    }
-}
-
-@media screen and (min-width: 550px){
-    .stat-bar-background{
-        width: 42%;
-    }
-}
-
-@media screen and (min-width: 600px){
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .opened-pokemon-details .main .main-content .pokemons{
-        grid-template-columns: 1fr;
-    }
-
-    .abilities-list{
-        margin-left: 40px;
-        margin-bottom: 15px;
     }
 }
 

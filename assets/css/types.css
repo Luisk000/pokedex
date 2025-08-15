@@ -374,7 +374,7 @@
     background: linear-gradient(to bottom, rgb(91 144 163) 210px, white 240px);
 }
 
-@media screen and (min-width: 460px) and (max-width: 499px){
+@media screen and (min-width: 460px) and (max-width: 599px){
      .fighting-background{
         background: linear-gradient(to bottom, rgb(208 64 106) 260px, white 290px);
     }
