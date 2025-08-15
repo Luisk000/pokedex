@@ -135,3 +135,8 @@ body {
     align-self: center;
 }
 /* 1rem = default (geralmente 16px) */
+
+/* .main-content, .pagination{
+    display: none !important;
+} */
+
