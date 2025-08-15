@@ -12,7 +12,6 @@
     }
 
     .select-version{
-        font-size: 18px;
         margin-left: 15px;
         border: 7px solid white
     }
@@ -127,6 +126,10 @@
 }
 
 @media screen and (min-width: 650px){
+
+}
+
+@media screen and (min-width: 700px){
     .opened-pokemon-details .main .main-content .pokemons{
         grid-template-columns: 1fr 1fr;
     }
@@ -138,9 +141,7 @@
     .evolutions-list, .variations-list{
         width: 40vw;
     }
-}
 
-@media screen and (min-width: 700px){
     .main{
         gap: 5px;
         margin-left: 5px;
@@ -163,6 +164,10 @@
 
     .title{
         font-size: 40px;
+    }
+
+    .select-version{
+        font-size: 18px;
     }
 }
 
