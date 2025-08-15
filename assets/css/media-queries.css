@@ -89,6 +89,18 @@
         grid-template-columns: 1fr;
     }
 
+    .opened-pokemon-details .main .main-content{
+        display:inline;
+    }
+
+    .opened-pokemon-details .pagination{
+        display: flex;
+    }
+
+    .return-button {
+        display: none;
+    }
+
     .details-content{
         width:65%;
     }

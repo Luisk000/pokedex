@@ -134,9 +134,9 @@ body {
     text-transform: capitalize;
     align-self: center;
 }
-/* 1rem = default (geralmente 16px) */
 
-.opened-pokemon-details .main-content{
-
+.opened-pokemon-details .main .main-content, .opened-pokemon-details .pagination{
+    display: none;
 }
 
+/* 1rem = default (geralmente 16px) */

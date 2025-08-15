@@ -95,6 +95,7 @@ function buildDetailHtml(pokemon, html) {
     buildStatsHtml(pokemon)
     buildAbilitiesHtml(pokemon)
     buildTopGradient(pokemon)
+    buildReturnButton()
 
     if (pokemon.evolutionChain.pokemons.length > 1)
         evolution.buildEvolutionsHtml(pokemon)
@@ -110,6 +111,22 @@ function buildTopGradient(pokemon){
         secondaryType = `<div class="detail-gradient secondary-${pokemon.types[1]} top-left-gradient"></div>`
 
     top.innerHTML += secondaryType
+}
+
+function buildReturnButton(){
+    const top = document.getElementById('top');
+    const returnButton = 
+        `<div>
+            <button class='return-button' id='return-button'>&larr;<p>voltar</p></button>
+        </div>`
+
+    top.innerHTML = returnButton + top.innerHTML;
+
+    const returnButtonElement = document.getElementById('return-button');
+    returnButtonElement.addEventListener('click', () => {
+        selectedPokemon = null;
+        pokemonDetails.closeDetailsScreen()
+    })
 }
 
 function buildDetailCardHtml(pokemon, html){

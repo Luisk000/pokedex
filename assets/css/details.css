@@ -327,3 +327,25 @@
     font-size: 13px;
     text-transform: capitalize;
 }
+
+.return-button{
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    top: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.return-button p{
+    font-size: 20px;
+}
+
+.return-button:hover{
+    transform: scale(1.1);
+}
