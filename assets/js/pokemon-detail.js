@@ -192,6 +192,48 @@ function buildInfoHtml(pokemon){
     pokemon.types.forEach((type) => {
         typesHtml.innerHTML += `<div class="type ${type}">${type}</div>`
     })
+    buildWeakToHtml(pokemon)
+}
+
+async function buildWeakToHtml(pokemon){
+    let weakTo = [];
+    let strongAgainst = [];
+
+    await getTypeInfo(pokemon.types[0])
+        .then((typeInfo) => {
+            typeInfo.damage_relations.double_damage_from
+                .forEach((type) => weakTo.push(type.name))
+            typeInfo.damage_relations.half_damage_from
+                .forEach((type) => strongAgainst.push(type.name))
+        })
+
+    if (pokemon.types[1]){
+        await getTypeInfo(pokemon.types[1])
+            .then((typeInfo) => {
+                typeInfo.damage_relations.double_damage_from
+                    .forEach((type) => {
+                        if (strongAgainst.find(t => t == type.name))                       
+                            strongAgainst = strongAgainst.filter(t => t !== type.name)   
+                        else
+                            weakTo.push(type.name)
+                    })
+                typeInfo.damage_relations.half_damage_from
+                    .forEach((type) => {
+                        if (weakTo.find(t => t == type.name))
+                            weakTo = weakTo.filter(t => t !== type.name)   
+                        else
+                            strongAgainst.push(type.name)               
+                    })
+            })
+
+        console.log(weakTo)
+    }
+}
+
+async function getTypeInfo(type){
+    const baseUrl = "https://pokeapi.co/api/v2/type/";
+    return await fetch(baseUrl + type)
+        .then((result) => result.json())
 }
 
 function buildEntryHtml(pokemon){
