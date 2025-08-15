@@ -138,6 +138,7 @@
     top:0;
     margin-top: 22px;
     z-index: 10;
+    overflow: auto;
 }
 
 .ability:hover .ability-info-box{
@@ -197,7 +198,7 @@
     height: 145px;
 }
 
-.variation img:hover, .evolution img:hover{
+.variation img:hover, .evolution:hover{
     transform: scale(1.1);
 }
 
@@ -209,7 +210,7 @@
 }
 
 .variation-name{
-    width: 160px;
+    width: 130px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -343,20 +344,16 @@
 
 .return-button{
     position: absolute;
-    background: none;
     border: none;
-    font-size: 40px;
+    background: none;
+    font-size: 42px;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    top: 0;
+    top: 1px;
     cursor: pointer;
     z-index: 3;
-}
-
-.return-button p{
-    font-size: 20px;
 }
 
 .return-button:hover{

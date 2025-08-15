@@ -117,7 +117,7 @@ function buildReturnButton(){
     const top = document.getElementById('top');
     const returnButton = 
         `<div>
-            <button class='return-button' id='return-button'>&larr;<p>voltar</p></button>
+            <button class='return-button' id='return-button'>&larr;</button>
         </div>`
 
     top.innerHTML = returnButton + top.innerHTML;

@@ -2,6 +2,23 @@
     .pokemons  {
         grid-template-columns: 1fr 1fr;
     }
+
+    .variation-name, .evolution-name{
+        font-size: 14px;
+    }
+
+    .variation-name{
+        width: 140px;
+    }
+
+    .detail{
+        flex-direction: column;
+    }
+
+    .types{
+        flex-direction: row;        
+    }  
+
 }
 
 @media screen and (min-width: 380px){
@@ -169,6 +186,10 @@
 
     .variation-name, .evolution-name{
         font-size: 15px;
+    }
+
+    .variation-name{
+        width: 150px;
     }
 
     .main-content{

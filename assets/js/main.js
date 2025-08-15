@@ -6,6 +6,11 @@ const previousPageButton = document.getElementById('previousPageButton')
 const nextPageButton = document.getElementById('nextPageButton')
 const lastPageButton = document.getElementById('lastPageButton')
 
+async function get(){
+    await gender.getGenders();
+    getPokemon()
+}
+
 function getPokemon(){
     pokeApi.getPokemons(offset).then((pokemons = []) => {       
         let innerHTML = '';
@@ -73,5 +78,4 @@ lastPageButton.addEventListener('click', () => {
     pokemonDetails.closeDetailsScreen(); 
 })
 
-gender.getGenders();
-getPokemon();
+get();

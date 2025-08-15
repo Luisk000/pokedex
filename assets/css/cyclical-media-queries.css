@@ -28,7 +28,10 @@
     }
 }
 
-@media screen and (min-width: 500px) and (max-width: 915px), (min-width: 1000px) and (max-width: 1120px) {
+@media 
+    screen and (min-width: 500px) and (max-width: 915px), 
+    screen and (min-width: 1000px) and (max-width: 1120px) 
+{
     .opened-pokemon-details .main .main-content .pokemons{
         .detail{
             display: flex;
