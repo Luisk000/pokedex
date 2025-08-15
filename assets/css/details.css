@@ -67,6 +67,13 @@
     list-style-type: none;
     text-transform: capitalize;
     width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-value{
+    width: 40px;
 }
 
 .stat-name, .stat-value, .ability{
