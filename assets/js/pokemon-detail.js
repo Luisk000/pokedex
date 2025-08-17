@@ -168,6 +168,10 @@ function buildInfoHtml(pokemon){
             <div class='info-name'>TYPES</div> 
             <div class="detail-types" id="types"></div>           
         </div>
+        <div class="detail-types-card">  
+            <div class='info-name'>WEAK TO</div> 
+            <div class="detail-types" id="weak-to"></div>           
+        </div>
         <div class='info-card'>
             <div class='info-row'>
                 <div class='info-name'>HEIGHT</div>
@@ -207,27 +211,25 @@ async function buildWeakToHtml(pokemon){
                 .forEach((type) => strongAgainst.push(type.name))
         })
 
-    if (pokemon.types[1]){
+    if (pokemon.types[1])
         await getTypeInfo(pokemon.types[1])
             .then((typeInfo) => {
                 typeInfo.damage_relations.double_damage_from
                     .forEach((type) => {
-                        if (strongAgainst.find(t => t == type.name))                       
-                            strongAgainst = strongAgainst.filter(t => t !== type.name)   
-                        else
+                        if (!strongAgainst.find(t => t == type.name))                       
                             weakTo.push(type.name)
                     })
                 typeInfo.damage_relations.half_damage_from
                     .forEach((type) => {
                         if (weakTo.find(t => t == type.name))
-                            weakTo = weakTo.filter(t => t !== type.name)   
-                        else
-                            strongAgainst.push(type.name)               
+                            weakTo = weakTo.filter(t => t !== type.name)            
                     })
             })
 
-        console.log(weakTo)
-    }
+    weakTo.forEach((type) => {
+        const weakToCard = document.getElementById('weak-to');
+        weakToCard.innerHTML += `<div class="type ${type}">${type}</div>`
+    })
 }
 
 async function getTypeInfo(type){

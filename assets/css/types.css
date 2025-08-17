@@ -19,114 +19,119 @@
     --steel: rgb(91 144 163);
 
     --degree: 150deg;
+
+    --dark: rgb(40, 40, 40);
+
+    --thin: 400;
+    --thick: 550;
 }
 
 .fighting{
     background-color: var(--fighting);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .psychic{
     background-color: var(--psychic);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .poison{
     background-color: var(--poison);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .dragon{
     background-color: var(--dragon);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .ghost{
     background-color: var(--ghost);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .dark{
     background-color: var(--dark);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .ground{
     background-color: var(--ground);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .fire{
     background-color: var(--fire);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .fairy{
     background-color: var(--fairy);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .water{
     background-color: var(--water);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .flying{
     background-color: var(--flying);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .normal{
     background-color: var(--normal);
     color: white;
-    font-weight: 400;
+    font-weight: var(--thin);
 }
 
 .rock{
     background-color: var(--rock);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .electric{
     background-color: var(--electric);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .bug{
     background-color: var(--bug);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .grass{
     background-color: var(--grass);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .ice{
     background-color: var(--ice);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .steel{
     background-color: var(--steel);
-    color: rgb(40, 40, 40);
-    font-weight: 600;
+    color: var(--dark);
+    font-weight: var(--thick);
 }
 
 .secondary-fighting{
